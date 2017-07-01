@@ -11,6 +11,14 @@ import { UsersettingComponent } from './usersetting/usersetting.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UserlistComponent } from './userlist/userlist.component';
 
+import { ModalComponent } from './userlist/modal/modal.component';
+import { ModalService } from './userlist/modal/modal.service';
+import { CompleteComponent } from './userlist/complete/complete.component';
+
+import {routing} from './app.routing';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +29,17 @@ import { UserlistComponent } from './userlist/userlist.component';
     SettingComponent,
     UsersettingComponent,
     CreateuserComponent,
-    UserlistComponent
+    UserlistComponent,
+    ModalComponent,
+    CompleteComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing,
+    ChartsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ModalService],
+  bootstrap: [AppComponent],
+  entryComponents: [CompleteComponent]
 })
 export class AppModule { }
