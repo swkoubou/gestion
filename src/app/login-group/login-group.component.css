@@ -1,4 +1,4 @@
-#container {
+/*#container {
   text-align: center;
   border: 1px solid;
   width: 70vw;
@@ -38,4 +38,25 @@ li:nth-child(1) {
 }
 #next:hover{
   background-color: #fff;
+}*/
+
+menu {
+width: 150px;
+position: fixed;
+top: 80px;
+outline: 2px #CCC solid;
+display: relative;
+}
+
+menu > li {
+list-style: none;
+width: 130px;
+margin: 10px 0 10px 20px;
+}
+menu > li > span {
+  margin-right: 10px;
+}
+menu > li:hover {
+  color: #DC143C;
+  cursor: pointer;
 }
