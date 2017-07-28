@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { LoginUserComponent } from './login-user/login-user.component';
@@ -10,6 +13,7 @@ import { SettingComponent } from './setting/setting.component';
 import { UsersettingComponent } from './usersetting/usersetting.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UserlistComponent } from './userlist/userlist.component';
+
 
 import { ModalComponent } from './userlist/modal/modal.component';
 import { ModalService } from './userlist/modal/modal.service';
@@ -36,8 +40,11 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   imports: [
     BrowserModule,
     routing,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    MdButtonModule, MdCheckboxModule
   ],
+  exports: [MdButtonModule, MdCheckboxModule],
   providers: [ModalService],
   bootstrap: [AppComponent],
   entryComponents: [CompleteComponent]
