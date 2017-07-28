@@ -1,8 +1,8 @@
-/*#container {
+#container {
   text-align: center;
   border: 1px solid;
-  width: 70vw;
-  height:55vh;
+  /*width: 70vw;*/
+  /*height:55vh;*/
   margin: 15vh 0 0 15vw;
 }
 
@@ -38,7 +38,7 @@ li:nth-child(1) {
 }
 #next:hover{
   background-color: #fff;
-}*/
+}
 
 menu {
 width: 150px;
