@@ -1,3 +1,48 @@
-<p>
-  top-admin works!
-</p>
+<div id='Userlist'>
+  <h1>社員名簿</h1>
+  <form id='hi'>
+    期間指定：
+    <select (change)='FrontDay($event.target.value)'>
+      <option *ngFor="let n of month">
+        {{n.month}}
+      </option>
+    </select>月：
+    <select>
+      <option *ngFor="let n of fday">
+        {{n.day}}
+      </option>
+    </select>日　～　
+    <select  (change)='BackDay($event.target.value)'>
+      <option *ngFor="let n of month">
+        {{n.month}}
+      </option>
+    </select>月：
+    <select>
+      <option *ngFor="let n of bday">
+        {{n.day}}
+      </option>
+    </select>日
+  </form>
+  <hr />
+  <div id="Emplist">
+    <table>
+	     <thead>
+			  <tr>
+				  <th>氏名</th>
+		      <th>心拍数</th>
+			    <th>ストレス</th>
+          <th>勤務時間</th>
+        </tr>
+	    </thead>
+	     <tbody>
+        <tr *ngFor="let Emp of VisibleList" >
+          <td>{{Emp.name}}</td>
+          <td>{{Emp.stress}}</td>
+          <td *ngIf='Emp.authority == false'>有</td>
+          <td *ngIf='Emp.authority == true'>無</td>
+          <td>{{Emp.time}}</td>
+        </tr>
+	    </tbody>
+    </table>
+  </div>
+</div>

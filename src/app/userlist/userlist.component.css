@@ -1,13 +1,3 @@
-#Userlist {
-  border: solid;
-  border-width: 1px;
-}
-
-#Title {
-  margin-top: 0;
-  margin-left: 10px;
-}
-
 li {
   display: inline-block;
   font-size: 15px;
@@ -16,12 +6,9 @@ li {
 }
 
 #Emplist {
-  border: solid;
-  border-width: 1px;
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
+  margin: 0 auto;
   margin-top: 30px;
-  background-color: #EEE;
 }
 
 table {
@@ -37,12 +24,10 @@ thead tr{
 
 tbody tr{
   cursor: pointer;
-  border-bottom:solid #BBB;
-  border-width: 1px;
 }
 
 tbody tr:hover{
-  background-color: #FFF;
+  background-color: #EEE;
 }
 
 td, th {
@@ -59,7 +44,7 @@ td, th {
   font-size: 100%;
   margin-right: 4vh;
   cursor: pointer;
-  background-color: #EEE;
+  background-color: #FFF;
   border-style: none;
   border: solid;
   border-width: 1px;

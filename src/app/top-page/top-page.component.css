@@ -1,81 +1,130 @@
-#triggar{
-  width: 2vw;
-  font-size: 2vw;
+#left{
+  width: 15%;
+  height: 100%;
+  max-height: 100%;
   position: absolute;
-  top:0.5vh;
-  left: 95vw;
-  margin-left: auto;
-  cursor: pointer;
+  top: 0;
+  left: 0;
+  box-shadow: 4px 2px 2px 0px rgba(0,0,0,.2);
+  box-sizing: border-box;
+  border-right: 1px solid #e0e0e0;
+  background-color: #193C4D;
+  color: white;
+  z-index: 20;
 }
+#left img{
+  width: 30%;
+  border-radius: 50px;
+  margin-top: 5vh;
+  margin-left: 2vw;
+}
+#left header {
+  background-color: #002537;
+  height: 20%;
+}
+#left header p{
+  color: white;
+  margin-top: 10px;
+  margin-left: 2vw;
+}
+#left table{
+  margin-top: 25px;
+  width: 90%;
+  font-size: 1vw;
+}
+
+
+#right{
+    width: 85%;
+    height: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    background: #F4F4F4;
+}
+#right header{
+  height: 7%;
+  background-color: #00E676;
+  text-align: center;
+  box-shadow: 0 4px 1px rgba(0,0,0,0.2);
+}
+#right header img{
+  margin-top: 0%;
+  height: 100%;
+}
+
+
+#triggar{
+  width: 56px;
+  height: 56px;
+  font-size: 1vw;
+  text-align: center;
+  position: fixed;
+  top:90vh;
+  left: 95vw;
+  cursor: pointer;
+  background-color: #009250;
+  border-radius: 50%;
+  box-shadow: 0 7px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);
+}
+#triggar i{
+  vertical-align: middle;
+  margin-top: 25%;/*＝幅と高さ*/
+}
+
 #menu {
   position: absolute;
   margin: 0 0 0 0;
   z-index: 110;
-  right: -340px; /* メニューのwidth + padding */
-  width: 8vw; /* メニューのwidth */
-  transition: left .5s, right .5s; /* アニメーション */
-  border: 3px solid #ccc;
+  top:65vh;
+  left: 70vw;
+  width: 10vw; /* メニューのwidth */
+  opacity: 0;
+  transition: 1s;
+  visibility: hidden;
 }
 #menu li{
   font-size: 1vw;
   margin-top: 1vh;
   cursor: pointer;
   list-style: none;
-  
+  text-align: right;
+
 }
 #menu li:hover{
   color: #888;
+}
+
+#menu i{
+  width: 40px;
+  height: 40px;
+  font-size: 1vw;
+  cursor: pointer;
+  text-align: center;
+  background-color: #009250;
+  border-radius: 50%;
+  box-shadow: 0 7px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 #flag{
   display: none;
 }
 
+
 #flag:checked + #menu{
-  right:1vw;
-}
-#flag:checked ~ #container{
-  width: 85vw;
+  visibility: visible;
+  opacity: 1;
 }
 
-#container {
+footer{
+  font-size:0.5vw;
   position: absolute;
-  top:8vh;
-  left: 1vw;
-  height: 90vh;
-  width: 98vw;
-  display: grid;
-  grid-gap:30px;
-  grid-template-columns: 2fr 4fr 4fr;
-  grid-template-rows: 5fr 5fr;
-  transition: width .5s; /* アニメーション */
+  bottom:1%;
+  color: rgba(255, 255, 255, 0.8);
 }
-.item {
-  padding: 10px;
-  border: 3px solid #ccc;
-  overflow: hidden;
-}
-
-.item header {
-  width: 100%;
-  margin: -100px 0 0 -100px;
-  padding: 100px 100px 10px 100px;
-  background-color: #DDD;
-  text-align: center;
+footer p{
   font-size: 1.5vw;
-}
-
-.item p {
-  font-size: 1.8vw;
-  color: #999;
-}
-
-.box-2 {
-  grid-column: 2 / 4;
-}
-
-.chart {
-  margin-top: 1.5vh;
-  margin-left: 0.5vw;
-  width: 90%;
 }
