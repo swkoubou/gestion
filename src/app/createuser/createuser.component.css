@@ -1,0 +1,38 @@
+#container {
+  font-size: 1.5vw;
+}
+
+.box{
+  margin: 20px 0 0 10px;
+  display: grid;
+  width: 90%;
+  grid-gap:30px;
+  grid-template-columns: 3fr 3fr 4fr;
+  grid-template-rows: 10fr;
+}
+
+.box p{
+  margin: 0 0 0 0;
+}
+
+.name{
+  width: 30%;
+}
+
+.box input {
+  font-size: 1vw;
+  padding: 10px 0 10px 0;
+  width: 20vw;
+}
+
+#button_cmp{
+  margin: 20px 0 20px 0;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#button_cmp input{
+  font-size: 2vw;
+  padding: 5px 5px 5px 5px;
+}

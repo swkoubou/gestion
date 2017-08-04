@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router} from '@angular/router';
+import { ListviewComponent } from './../listview/listview.component';
+import { TopAdminComponent } from './../top-admin/top-admin.component';
+import { SettingComponent } from './../setting/setting.component';
+
 
 @Component({
   selector: 'app-top-page',
@@ -14,31 +18,34 @@ export class TopPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  Weight:number = 70;
-  Height:number = 180;
-
-
-  public barChartOptions:any = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType:string = 'bar';
-  public LineChartType:string = 'line';
-  public barChartLegend:boolean = false;
-  public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 40, 11], label: '歩数'}
-  ];
-
-  Change_TopPage():void{
-    this.router.navigate(['/toppage']);
+  User:any = {
+    Name : "野獣",
+    Weight:70,
+    Height:180,
+    Stress:true
   }
-  Change_Admin():void{
-    this.router.navigate(['/admin']);
+  public listview:boolean = true;
+  public topadmin:boolean = false;
+  public setting:boolean = false;
+
+  Change_Setting():void {
+    this.setting = true;
+    this.listview = false;
+    this.topadmin = false;
   }
-  Change_Setting():void{
-    this.router.navigate(['/setting']);
+
+  Change_TopAdmin():void {
+    this.setting = false;
+    this.listview = false;
+    this.topadmin = true;
   }
+
+  Change_ListView():void {
+    this.setting = false;
+    this.listview = true;
+    this.topadmin = false;
+  }
+
   Change_Logout():void{
     this.router.navigate(['/']);
   }

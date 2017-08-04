@@ -1,50 +1,47 @@
-<label id='triggar' for='flag'>三</label>
-<input type='checkbox' id='flag' />
-<ul id='menu'>
-  <li (click)='Change_TopPage()'>個人モード</li>
-  <li (click)='Change_Admin()'>管理者モード</li>
-  <li (click)='Change_Setting()'>各種設定</li>
-  <li (click)='Change_Logout()'>ログアウト</li>
-</ul>
-<div id='container'>
+<div id="left">
+  <header>
+    <img src="https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20160319%2F73%2F7666243%2F444%2F400x400xbb8969833802de4d23d8397c.jpg%2F300%2F600&twidth=300&theight=600&qlt=80&res_format=jpg&op=r" />
+    <p>{{User.Name}}</p>
+  </header>
+  <table class="type01">
+	<tr>
+    <td><i class="material-icons">accessibility</i></td>
+		<td>身長</td>
+    <td>{{User.Height}}cm</td>
+	</tr>
+	<tr>
+    <td><i class="material-icons">accessibility</i></td>
+    <td>体重</td>
+    <td>{{User.Weight}}kg</td>
+	</tr>
+	<tr>
+    <td><i class="material-icons">favorite</i></td>
+    <td>ストレス</td>
+    <td>
+      <p *ngIf="User.Stress">検知しました</p>
+      <p *ngIf="!User.Stress">ないです</p>
+    </td>
+	</tr>
+</table>
+<footer>
+  &copy;2017 Growbal Active
+</footer>
+</div>
 
-  <div class='item'>
-    <header>プロフィール</header>
-    <p>身長:{{Height}}cm</p>
-    <p>体重:{{Weight}}kg</p>
-  </div>
 
-  <div class='item box-2'>
-    <header>WorkTime</header>
-    <h1>まだ</h1>
-  </div>
-
-  <div class='item'>
-    <header>ユーザーのストレス</header>
-    <p>検知しました</p>
-  </div>
-
-  <div class='item'>
-    <header>Steps</header>
-    <div class='chart' style="display: block">
-      <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"></canvas>
-    </div>
-  </div>
-
-  <div class='item'>
-    <header>Heart Beat</header>
-    <div class='chart' style="display: block">
-      <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="LineChartType"></canvas>
-    </div>
-  </div>
+<div id='right'>
+  <header>
+    <img src='assets/images/gestion-logo.png' />
+  </header>
+  <label id='triggar' for='flag'><i class="material-icons">reorder</i></label>
+  <input type='checkbox' id='flag' />
+  <ul id='menu'>
+  <li (click)='Change_ListView()'>個人モード<i class="material-icons">person</i></li>
+  <li (click)='Change_TopAdmin()'>管理者モード<i class="material-icons">group</i></li>
+  <li (click)='Change_Setting()'>各種設定<i class="material-icons">build</i></li>
+  <li (click)='Change_Logout()'>ログアウト<i class="material-icons">block</i></li>
+  </ul>
+  <app-listview *ngIf='listview'></app-listview>
+  <app-top-admin *ngIf='topadmin'></app-top-admin>
+  <app-setting *ngIf='setting'></app-setting>
 </div>

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule,JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LoginUserComponent } from './login-user/login-user.component';
@@ -10,13 +12,18 @@ import { SettingComponent } from './setting/setting.component';
 import { UsersettingComponent } from './usersetting/usersetting.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UserlistComponent } from './userlist/userlist.component';
-
+import { ListviewComponent } from './listview/listview.component';
 import { ModalComponent } from './userlist/modal/modal.component';
-import { ModalService } from './userlist/modal/modal.service';
 import { CompleteComponent } from './userlist/complete/complete.component';
+
+import { ModalService } from './userlist/modal/modal.service';
+import { RequestService} from './request.service';
 
 import {routing} from './app.routing';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 
 @NgModule({
@@ -31,14 +38,21 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     CreateuserComponent,
     UserlistComponent,
     ModalComponent,
-    CompleteComponent
+    CompleteComponent,
+    ListviewComponent
   ],
   imports: [
     BrowserModule,
     routing,
-    ChartsModule
+    ChartsModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule
   ],
-  providers: [ModalService],
+  providers: [
+    ModalService,
+    RequestService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [CompleteComponent]
 })
