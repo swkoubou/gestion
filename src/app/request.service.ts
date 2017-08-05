@@ -99,4 +99,10 @@ export class RequestService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+  testGet() {
+    return this.http.get('assets/data/data.json')
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }
