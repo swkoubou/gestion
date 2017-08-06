@@ -14,16 +14,19 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { ListviewComponent } from './listview/listview.component';
 import { ModalComponent } from './userlist/modal/modal.component';
+import { BootComponent } from './boot/boot.component';
 import { CompleteComponent } from './userlist/complete/complete.component';
 
 import { ModalService } from './userlist/modal/modal.service';
 import { RequestService} from './request.service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import {routing} from './app.routing';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { CreategroupComponent } from './creategroup/creategroup.component';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import 'rxjs/add/operator/catch';
     UserlistComponent,
     ModalComponent,
     CompleteComponent,
-    ListviewComponent
+    ListviewComponent,
+    BootComponent,
+    CreategroupComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import 'rxjs/add/operator/catch';
   ],
   providers: [
     ModalService,
-    RequestService
+    RequestService,
+    CookieService
   ],
   bootstrap: [AppComponent],
   entryComponents: [CompleteComponent]

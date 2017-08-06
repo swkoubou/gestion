@@ -15,7 +15,7 @@ header img{
 #container {
   border: none;
   max-width: 60vw;
-  max-height:55vh;
+  max-height:95vh;
   margin: 15vh auto;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -25,30 +25,32 @@ header img{
   box-shadow:1px 2px 5px 5px  #dbdbdb;
 }
 
+
 h1{
   padding-left: 3vh;
   padding-top:  3vh;
 }
-ul {
-  font-size: 2vw;
-  margin-left:2vw;
-}
-li:nth-child(1) {
-  font-weight: bold;
-}
-li:nth-child(2){
-  font-size: 1.5vw !important;
-  color: rgba(200,200,200,1);
-}
 
 .form {
-  width:50%;
+  width: 50%;
   font-size: 1.5vw;
   padding: 10px 10px 10px 10px;
+  border:none;
+  border-bottom:1px solid #d3d3d3;
   box-shadow: none;
-  margin-left: 2vw;
-  border: none;
-  border-bottom: 1px solid #d3d3d3;
+  border-width: 1px;
+  margin-left: 40px;
+  margin-bottom: 1vh;
+}
+.select{
+  width: 50%;
+  font-size: 1.5vw;
+  border:none;
+  box-shadow: none;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  margin-left: 40px;
+  
 }
 
 #buttoncmp{
@@ -58,7 +60,7 @@ li:nth-child(2){
   grid-template-columns: 5fr 5fr;
   width: 20%;
   margin-left: auto;
-  margin-right: 7vw;
+  margin-right: 12vw;
 }
 #buttoncmp input{
   background-color: rgba(0, 0, 0, 0);
@@ -71,7 +73,7 @@ li:nth-child(2){
   border-width: 1px;
   border-color: rgba(0, 0, 0,0);
 }
-#buttoncmp input:hover{
+#button_cmp input:hover{
   color: #00d36f;
   background-color: aliceblue;
 }

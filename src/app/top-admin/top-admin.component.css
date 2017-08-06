@@ -1,4 +1,4 @@
-#Userlist {
+#userlist {
   max-height: 80%;
   margin: 2% auto;
   width: 70%;
@@ -9,11 +9,11 @@
   border-radius: 10px;
 }
 
-#Userlist h1{
+#userlist h1{
   margin: 20px 0 0 20px;
 }
 
-#Emplist {
+#emplist {
   width: 100%;
   margin-left: 10px;
   margin-top: 30px;
@@ -45,9 +45,4 @@ tbody tr:hover{
 td, th {
   text-align: left;
   padding: 10px 20px;
-}
-
-#hi{
-  max-width: 50%;
-  margin: 0 auto;
 }

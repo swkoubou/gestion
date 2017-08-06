@@ -3,25 +3,26 @@
 }
 
 .box{
-  margin: 20px 0 0 10px;
+  margin: 20px auto;
   display: grid;
-  width: 90%;
+  width: 85%;
   grid-gap:30px;
-  grid-template-columns: 3fr 3fr 4fr;
+  grid-template-columns: 5fr 5fr;
   grid-template-rows: 10fr;
 }
 
 .box p{
+  text-align: center;
   margin: 0 0 0 0;
 }
 
-.name{
-  width: 30%;
-}
-
-.box input {
+.form {
+  width:100%;
   font-size: 1vw;
-  padding: 10px 0 10px 0;
+  padding: 10px 10px 10px 10px;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 #button_cmp{
@@ -30,7 +31,24 @@
 }
 
 #button_cmp input{
-  font-size: 2vw;
-  padding: 5px 5px 5px 5px;
-  width: 30%;
+  background-color: rgba(0, 0, 0, 0);
+  color: #28AF78;
+  font-size: 1.5vw;
+  padding: 5px 20px 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0,0);
+}
+#button_cmp input:hover{
+  color: #00d36f;
+  background-color: aliceblue;
+}
+
+#error{
+  color: red;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
 }

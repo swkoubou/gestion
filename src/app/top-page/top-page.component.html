@@ -1,6 +1,6 @@
 <div id="left">
   <header>
-    <img src="https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20160319%2F73%2F7666243%2F444%2F400x400xbb8969833802de4d23d8397c.jpg%2F300%2F600&twidth=300&theight=600&qlt=80&res_format=jpg&op=r" />
+    <img src='assets/images/userimage.PNG' />
     <p>{{User.Name}}</p>
   </header>
   <table class="type01">
@@ -33,15 +33,18 @@
   <header>
     <img src='assets/images/gestion-logo.png' />
   </header>
-  <label id='triggar' for='flag'><i class="material-icons">reorder</i></label>
-  <input type='checkbox' id='flag' />
-  <ul id='menu'>
-  <li (click)='Change_ListView()'>個人モード<i class="material-icons">person</i></li>
-  <li (click)='Change_TopAdmin()'>管理者モード<i class="material-icons">group</i></li>
-  <li (click)='Change_Setting()'>各種設定<i class="material-icons">build</i></li>
-  <li (click)='Change_Logout()'>ログアウト<i class="material-icons">block</i></li>
-  </ul>
-  <app-listview *ngIf='listview'></app-listview>
-  <app-top-admin *ngIf='topadmin'></app-top-admin>
-  <app-setting *ngIf='setting'></app-setting>
+  <div id='list'>
+    <input type='checkbox' id='flag' />
+    <ul id='menu'>
+      <li (click)='Change_ListView()' >個人モード<i class="material-icons">person</i></li>
+      <li (click)='Change_TopAdmin()' *ngIf='Admin'>管理者モード<i class="material-icons">group</i></li>
+      <li (click)='Change_Setting()' >各種設定<i class="material-icons">build</i></li>
+      <li (click)='Change_Logout()' >ログアウト<i class="material-icons">block</i></li>
+    </ul>
+    <label id='triggar' for='flag'><i class="material-icons">reorder</i></label>
+  </div>
+
+  <app-listview *ngIf='ListView'></app-listview>
+  <app-top-admin *ngIf='TopAdmin'></app-top-admin>
+  <app-setting *ngIf='Setting'></app-setting>
 </div>

@@ -1,17 +1,10 @@
 <div id='container'>
   <div class='box'>
     <p>氏名の変更</p>
-    <input type="text" placeholder="氏名を入力して下さい">
+    <input type="text" [(ngModel)]="Name" class='form' placeholder="氏名">
   </div>
 
-  <div class='box'>
-    <p>写真</p>
-    <div>
-      <input type="file" (change)="uho($event)">
-      <img class='image' width="300px" height="300px">
-    </div>
-  </div>
-
+  <p id='error' *ngIf='error'>{{error}}</p>
   <div id="button_cmp">
     <input type="button" value="完了" onclick="" >
     <input type="button" value="キャンセル" onclick="" >

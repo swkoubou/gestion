@@ -3,7 +3,7 @@
 
 <div class='item box-2'>
   <div class='contents-l'>
-    <h1>まだ</h1>
+    <div class="calender" calender></div>
   </div>
   <footer>WorkTime</footer>
 </div>
@@ -12,11 +12,12 @@
   <div class='contents'>
     <div class='chart' style="display: block">
       <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [legend]="barChartLegend"
-          [chartType]="barChartType"></canvas>
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
     </div>
   </div>
   <footer>Steps</footer>
@@ -26,11 +27,11 @@
   <div class='contents'>
   <div class='chart' style="display: block">
     <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [legend]="barChartLegend"
-          [chartType]="LineChartType"></canvas>
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="lineChartType"></canvas>
   </div>
 </div>
   <footer>Heart Beat</footer>

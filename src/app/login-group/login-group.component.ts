@@ -8,6 +8,8 @@ import { Router} from '@angular/router';
   styleUrls: ['./login-group.component.css']
 })
 export class LoginGroupComponent implements OnInit {
+  GroupName:string;
+  Error:string;
 
   constructor(private router:Router) { }
 
@@ -15,6 +17,15 @@ export class LoginGroupComponent implements OnInit {
   }
 
   Change_Page():void{
+    if(!this.GroupName){
+      this.Error = 'グループ名を入力してください';
+      return;
+    }
+    sessionStorage.setItem('GroupName', this.GroupName);
     this.router.navigate(['/loginuser']);
+  }
+
+  Change_CreateGroup():void{
+    this.router.navigate(['/creategroup']);
   }
 }

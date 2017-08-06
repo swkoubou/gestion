@@ -4,8 +4,8 @@ import {Routes,RouterModule} from '@angular/router';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginGroupComponent } from './login-group/login-group.component';
 import { TopPageComponent } from './top-page/top-page.component';
-import { TopAdminComponent } from './top-admin/top-admin.component';
-import { SettingComponent } from './setting/setting.component';
+import { BootComponent } from './boot/boot.component';
+import { CreategroupComponent} from './creategroup/creategroup.component';
 
 const appRoutes:Routes = [
   {
@@ -21,12 +21,12 @@ const appRoutes:Routes = [
     component:TopPageComponent
   },
   {
-    path:'admin',
-    component:TopAdminComponent
+    path:'boot',
+    component:BootComponent
   },
   {
-    path:'setting',
-    component:SettingComponent
+    path:'creategroup',
+    component:CreategroupComponent
   }
 ];
 

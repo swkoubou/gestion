@@ -15,17 +15,28 @@ export class LoginUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  Mailadress:string;
-  Password:string;
-  error:string = '';
+  MailAdress:string;
+  PassWord:string;
+  Error:string = '';
 
   UserLogin():void{
-    if(!this.Mailadress || !this.Password){
-      this.error = 'ユーザーネームとパスワードを入力してください';
+    if(!this.MailAdress || !this.PassWord){
+      this.Error = 'ユーザーネームかパスワードが正しくありません';
       return;
     }
-    console.log(this.Mailadress + this.Password);
-    window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228Q3J&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Ftoppage&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+    window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228Q3J&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+
+    /*this.authService.login(this.username,this.pass).subscribe(
+      (result:any) => {
+        sessionStorage.setItem('backend_token',result.access_token);
+        sessionStorage.setItem('username',result.username);
+        window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2288HW&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+        //'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2288HW&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+        // 規制時用
+        // window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228965&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+      },
+      error => this.fal(error)
+    );*/
   }
 
   Back_Page():void{

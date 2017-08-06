@@ -13,10 +13,13 @@ import { CreateuserComponent } from './../createuser/createuser.component';
   styleUrls: ['./setting.component.css'],
 })
 export class SettingComponent implements OnInit {
-  public admin:boolean = true;
-  public userlist:boolean = false;
-  public usersetting:boolean = true;
-  public createuser:boolean = false;
+  public Admin:boolean = true;
+  public UserList:boolean = false;
+  public UserSetting:boolean = true;
+  public CreateUser:boolean = false;
+  public SelectUserSetting:boolean = true;
+  public SelectCreateUser:boolean = false;
+  public SelectUserList:boolean = false;
 
   constructor(private router:Router) { }
 
@@ -24,21 +27,33 @@ export class SettingComponent implements OnInit {
   }
 
   Change_UserSetting():void {
-    this.usersetting = true;
-    this.userlist = false;
-    this.createuser = false;
+    this.UserSetting = true;
+    this.UserList = false;
+    this.CreateUser = false;
+
+    this.SelectUserSetting = true;
+    this.SelectCreateUser = false;
+    this.SelectUserList = false;
   }
 
   Change_CreateUser():void {
-    this.usersetting = false;
-    this.userlist = false;
-    this.createuser = true;
+    this.UserSetting = false;
+    this.UserList = false;
+    this.CreateUser = true;
+
+    this.SelectUserSetting = false;
+    this.SelectCreateUser = true;
+    this.SelectUserList = false;
   }
 
   Change_UserList():void {
-    this.usersetting = false;
-    this.userlist = true;
-    this.createuser = false;
+    this.UserSetting = false;
+    this.UserList = true;
+    this.CreateUser = false;
+
+    this.SelectUserSetting = false;
+    this.SelectCreateUser = false;
+    this.SelectUserList = true;
   }
 
   Change_TopPage():void{
