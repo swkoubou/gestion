@@ -11,8 +11,8 @@ export class UsersettingComponent {
   constructor(private element: ElementRef) {}
 
   uho(event):void {
-    var Data:File = event.target.files[0];
-    if(Data.type.indexOf("image") < 0){
+    var data:File = event.target.files[0];
+    if(data.type.indexOf("image") < 0){
       alert("画像以外渡すなクソ");
       return;
     }

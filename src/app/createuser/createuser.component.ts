@@ -11,19 +11,19 @@ export class CreateuserComponent{
   constructor(private element: ElementRef) {}
 
   uho(event):void {
-    var Data:File = event.target.files[0];
-    if(Data.type.indexOf("image") < 0){
+    var data:File = event.target.files[0];
+    if(data.type.indexOf("image") < 0){
       alert("画像以外渡すなクソ");
       return;
     }
 
-    var Image = this.element.nativeElement.querySelector('.image');
-    var Reader = new FileReader();
-    Reader.onload = function() {
-        var Src = Reader.result;
-        Image.src = Src;
+    var image = this.element.nativeElement.querySelector('.image');
+    var reader = new FileReader();
+    reader.onload = function() {
+        var src = reader.result;
+        image.src = src;
     };
-    Reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(event.target.files[0]);
   }
 
 }

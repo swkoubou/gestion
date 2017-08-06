@@ -39,10 +39,10 @@ export class UserlistComponent implements OnInit {
 
   AdminSort():void {
     this.VisibleList = [];
-    var Counter:number = 0;
+    var counter:number = 0;
     for(var i = 0; i < this.EmployeeList.length; i++){
       if(this.EmployeeList[i].authority == true){
-        this.VisibleList[Counter++] = Object.assign({}, this.EmployeeList[i]);
+        this.VisibleList[counter++] = Object.assign({}, this.EmployeeList[i]);
       }
     }
   }
