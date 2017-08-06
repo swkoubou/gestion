@@ -30,7 +30,15 @@
 }
 
 #button_cmp input{
-  font-size: 2vw;
+  font-size: 1vw;
+  background-color: rgba(0, 0, 0, 0);
+  color: #28AF78;
+  border:none;
   padding: 5px 5px 5px 5px;
   width: 30%;
+}
+
+#name{
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
 }
