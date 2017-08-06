@@ -5,7 +5,7 @@ li {
   margin-right: 3%;
 }
 
-#Emplist {
+#emplist {
   width: 100%;
   margin: 0 auto;
   margin-top: 30px;
@@ -35,12 +35,12 @@ td, th {
   padding: 10px 20px;
 }
 
-#Buttonlist{
+#buttonlist{
   display: inline-block;
   margin: 4vh auto 4vh 40%;
 }
 
-#Buttonlist input{
+#buttonlist input{
   font-size: 100%;
   margin-right: 4vh;
   cursor: pointer;
@@ -52,6 +52,6 @@ td, th {
   padding: 5px 20px 5px 20px;
 }
 
-#Buttonlist input:hover{
+#buttonlist input:hover{
   background-color: #FFF;
 }

@@ -30,11 +30,11 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  containerClick($event) {
+  ContainerClick($event) {
     $event.stopPropagation();
   }
 
-  close() {
+  Close() {
     this.modal.close();
   }
 

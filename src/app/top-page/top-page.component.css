@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: 4px 2px 2px 0px rgba(0,0,0,.2);
+  /*box-shadow: 4px 2px 2px 0px rgba(0,0,0,.2);*/
   box-sizing: border-box;
   border-right: 1px solid #e0e0e0;
   background-color: #193C4D;
@@ -77,8 +77,8 @@
   position: absolute;
   margin: 0 0 0 0;
   z-index: 110;
-  top:65vh;
-  left: 70vw;
+  top:61vh;
+  left: 70.5vw;
   width: 10vw; /* メニューのwidth */
   opacity: 0;
   transition: 1s;
@@ -107,6 +107,7 @@
   box-shadow: 0 7px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);
   vertical-align: middle;
   margin-left: 10px;
+  line-height: 3vw;
 }
 
 #flag{

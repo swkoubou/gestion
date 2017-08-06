@@ -36,10 +36,10 @@
   <label id='triggar' for='flag'><i class="material-icons">reorder</i></label>
   <input type='checkbox' id='flag' />
   <ul id='menu'>
-  <li (click)='Change_ListView()'>個人モード<i class="material-icons">person</i></li>
-  <li (click)='Change_TopAdmin()'>管理者モード<i class="material-icons">group</i></li>
-  <li (click)='Change_Setting()'>各種設定<i class="material-icons">build</i></li>
-  <li (click)='Change_Logout()'>ログアウト<i class="material-icons">block</i></li>
+    <li (click)='Change_ListView()'>個人モード<i class="material-icons">person</i></li>
+    <li (click)='Change_TopAdmin()'>管理者モード<i class="material-icons">group</i></li>
+    <li (click)='Change_Setting()'>各種設定<i class="material-icons">build</i></li>
+    <li (click)='Change_Logout()'>ログアウト<i class="material-icons">block</i></li>
   </ul>
   <app-listview *ngIf='listview'></app-listview>
   <app-top-admin *ngIf='topadmin'></app-top-admin>

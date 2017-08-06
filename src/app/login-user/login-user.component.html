@@ -6,8 +6,8 @@
     <li>メールアドレス・パスワードの確認</li>
   </ul><br />
   <div (keyup.enter)='UserLogin()'>
-    <input [(ngModel)]="Mailadress" id='EmailForm'  placeholder="メールアドレスを入力してください"><br />
-    <input [(ngModel)]="Password" id='PassForm'  placeholder="パスワードを入力してください"><br />
+    <input [(ngModel)]="Mailadress" id='emailForm'  placeholder="メールアドレスを入力してください"><br />
+    <input [(ngModel)]="Password" id='passForm'  placeholder="パスワードを入力してください"><br />
   </div>
   <div id='button_cmp'>
     <input type="button" id='login' value=" ログイン " (click)='UserLogin()'>

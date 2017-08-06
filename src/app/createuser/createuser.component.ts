@@ -17,13 +17,13 @@ export class CreateuserComponent{
       return;
     }
 
-    var image = this.element.nativeElement.querySelector('.image');
-    var reader = new FileReader();
-    reader.onload = function() {
-        var src = reader.result;
-        image.src = src;
+    var Image = this.element.nativeElement.querySelector('.image');
+    var Reader = new FileReader();
+    Reader.onload = function() {
+        var Src = Reader.result;
+        Image.src = Src;
     };
-    reader.readAsDataURL(event.target.files[0]);
+    Reader.readAsDataURL(event.target.files[0]);
   }
 
 }
