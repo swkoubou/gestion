@@ -70,7 +70,7 @@ export class UserlistComponent implements OnInit {
   EmpSetting(data: any): void {
     //受け渡すようにデータ整形
     console.log(data);
-    const provider = { provide: COMPLETE_TEXT_TOKEN, useValue: {name: data.name, email: data.email}};
+    const provider = { provide: COMPLETE_TEXT_TOKEN, useValue: {name: data.first_name, email: data.email, id: data.id}};
     //ModalServiceのやつ、表示したいコンポーネントも渡してる
     this.modal.open(CompleteComponent, provider);
   }

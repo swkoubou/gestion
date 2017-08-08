@@ -11,11 +11,13 @@ declare var google: any;
   styleUrls: ['./listview.component.css']
 })
 export class ListviewComponent implements OnInit {
+  //トークンやユーザデータを格納
   User:string = "";
   Token:string ="";
   BackToken:string = '';
   WorkTime:any = [];
 
+  //グラフデータを格納
   public barChartType:string = 'bar';
   public lineChartType:string = 'line';
 
@@ -38,6 +40,7 @@ export class ListviewComponent implements OnInit {
               public cookie: CookieService,
               public element: ElementRef) { }
 
+  //１週間の心拍数を計測する
   public WeekHeartRate(data:string[]):void{
     this.lineChartData = [];
     for(var i = 0;i<7;i++){
@@ -50,6 +53,7 @@ export class ListviewComponent implements OnInit {
     }
   }
 
+  //１週間の歩数を格納
   public WeekSteps(data:string[]):void{
     this.barChartData = [];
     for(var i = 0;i<7;i++){
@@ -58,7 +62,8 @@ export class ListviewComponent implements OnInit {
     }
   }
 
-  public monthGraph(data:any[]):void {
+  //勤務時間を計測
+  public WorkTimes(data:any[]):void {
     var date = [];
     for(var i = 0; i < data.length-1; i++){
       data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
@@ -66,13 +71,12 @@ export class ListviewComponent implements OnInit {
       date[i].setHours(date[i].getHours() - 9);
       data[i].id = data[i].id /1000 / 3600;
       this.WorkTime[i] = "";
-
       this.WorkTime[i] = [new Date(date[i].getFullYear(),date[i].getMonth(),date[i].getDate()),  parseFloat(data[i].id.toFixed(2))];
     }
-
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 
+  //ゼロ埋めをする
   public zero(num) {
     num += "";
     if (num.length === 1) {
@@ -81,6 +85,7 @@ export class ListviewComponent implements OnInit {
     return num;
   }
 
+  // 今日の日付を取得
   public getToday() {
     var date = new Date();
     let year = date.getFullYear();
@@ -91,29 +96,31 @@ export class ListviewComponent implements OnInit {
 
 
   ngOnInit() {
+    //　トークンを取得
     this.Token = this.cookie.get("access_token");
     this.BackToken = sessionStorage.getItem("token");
 
     let today = this.getToday();
 
+    //勤務時間を取得
     this.authService.getMonth(this.BackToken,today).subscribe(
-      hosu => this.monthGraph(hosu),
+      hosu => this.WorkTime(hosu),
       error => console.log(error)
     );
   }
 
+  //カレンダーチャートを描画
   drawChart() {
     var dataTable = new google.visualization.DataTable();
     dataTable.addColumn({ type: 'date', id: 'Date' });
     dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
     dataTable.addRows(this.WorkTime);
 
-
     var options = {
       calendar: { cellSize: 14 },
     };
 
-         var chart = new google.visualization.Calendar(this.element.nativeElement.querySelector('.calender'));
-         chart.draw(dataTable,options);
-     }
+     var chart = new google.visualization.Calendar(this.element.nativeElement.querySelector('.calender'));
+     chart.draw(dataTable,options);
+  }
 }

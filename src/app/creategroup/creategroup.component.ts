@@ -14,16 +14,17 @@ export class CreategroupComponent implements OnInit {
   ngOnInit() {
   }
 
+  //入力フォームを格納する変数
   MailAdress:string;
   PassWord:string;
   GroupName:string;
   FirstName:string;
   LastName:string;
   Sex:string;
-
   error:string = '';
   Success:boolean = false;
 
+  //ログイン時の処理
   UserLogin():void{
     if(!this.MailAdress || !this.PassWord || !this.GroupName || !this.FirstName || !this.LastName || !this.Sex){
       this.error = '未入力項目があります';
@@ -36,10 +37,12 @@ export class CreategroupComponent implements OnInit {
     );
   }
 
+  //１つページを戻す
   Back_Page():void{
   this.router.navigate(['/']);
   }
 
+  //ログインデータを送信した後の処理
   Result_Process(result:any){
     if(result.code){
       this.error = 'グループ名が重複しているので作成できません';

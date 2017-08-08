@@ -60,6 +60,18 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  AdminChange(token:string, password:string, email:string, id:number):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    var params = new URLSearchParams();
+    params.set('email', email);
+    params.set('password', password);
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/' + id;
+    return this.http.put(monthUrl, params, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
   GetStress(token:string):Observable<string[]>{
     let headers = new Headers({'Authorization':"Bearer " + token});
     let options = new RequestOptions({headers:headers});

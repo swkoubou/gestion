@@ -1,17 +1,22 @@
-<div class="modal">
-  <div class="title">{{name}}</div>
-  <div class='inline'>
-    <h2>メールアドレス</h2>
-    <input type='text' value='{{email}}' placeholder="メールアドレスを入力してください"/>
+<div id='container'>
+  <h2>{{name}}の情報変更</h2>
+  <div class='box'>
+    <p>メールアドレス</p>
+    <div>
+      <input type="text" [(ngModel)]="email" placeholder="メールアドレス">
+    </div>
   </div>
 
-  <div class='inline'>
-    <h2>パスワード</h2>
-    <input type='text' placeholder="パスワードを入力してください"/>
+  <div class='box'>
+    <p>パスワード</p>
+    <div>
+      <input type="password" [(ngModel)]="password" placeholder="パスワード">
+    </div>
   </div>
 
-  <div id='Buttonlist'>
-    <input type='button' value='完了' />
-    <input type='button' value='キャンセル' (click)="ModalClose()"/>
+  <p id='error' *ngIf='Error'>{{Error}}</p>
+  <div id="buttoncmp">
+    <input type="button" value="完了" (click)="Change_User()" >
+    <input type="button" value="閉じる" (click)="ModalClose()" >
   </div>
 </div>
