@@ -11,8 +11,8 @@
       <input name="name"[(ngModel)]="FirstName" class='form'  placeholder="管理者の苗字">
       <input name="name"[(ngModel)]="LastName" class='form'  placeholder="管理者の名前">
 
-      <select class="select" [(ngModel)]="Sex" name='name'>
-        <option value="" selected>性別</option>
+      <select class="select"[(ngModel)]="Sex" name='name'>
+        <option value="" disabled selected >性別</option>
         <option value="male">男</option>
         <option value="famale">女</option>
       </select>
