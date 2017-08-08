@@ -16,10 +16,16 @@
   margin: 0 0 0 0;
 }
 
-.form {
-  width:100%;
+.name{
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  grid-gap:10px;
+}
+
+.name input {
   font-size: 1vw;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 0 10px 0;
+  width: 20vw;
   box-shadow: none;
   border: none;
   border-bottom: 1px solid #d3d3d3;
@@ -27,7 +33,7 @@
 
 #button_cmp{
   margin: 20px auto;
-  max-width: 30%;
+  max-width: 20%;
 }
 
 #button_cmp input{

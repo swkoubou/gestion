@@ -13,7 +13,7 @@
   <form #f="ngForm" action="Change_Page()">
 
     <input name="name"[(ngModel)]="MailAdress" class='form'  placeholder="メールアドレス">
-    <input name="name"[(ngModel)]="PassWord" class='form'  placeholder="パスワード">
+    <input type="password" name="name"[(ngModel)]="PassWord" class='form'  placeholder="パスワード">
 
     <p id='error' *ngIf='Error'>{{Error}}</p>
 

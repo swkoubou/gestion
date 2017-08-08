@@ -50,7 +50,7 @@ h1{
   margin-bottom: 1vh;
   margin-top: 1vh;
   margin-left: 40px;
-  
+
 }
 
 #buttoncmp{
@@ -82,4 +82,9 @@ h1{
   color: red;
   width: 100%;
   text-align: center;
+}
+
+#successmessage{
+  text-align: center;
+  font-size: 2vw;
 }

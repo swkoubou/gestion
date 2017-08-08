@@ -48,13 +48,36 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
-  login(username:string,password:string):Observable<string[]>{
+  putProfile(token:string, fitbitid:string, fitbittoken:string):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
     var params = new URLSearchParams();
-    params.set('password',password);
+    params.set('fitbit_id', fitbitid);
+    params.set('fitbit_access_token', fitbittoken);
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/me';
+    return this.http.put(monthUrl,params, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
 
-    let options = new RequestOptions({search:params});
+  GetStress(token:string):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/me/stress';
+    return this.http.get(monthUrl, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
 
-    return this.http.post(this.backurl + '/users/' + username + '/login','',options)
+  login(mailadress:string,password:string, groupname:string):Observable<string[]>{
+    let creUrl = 'http://gestion2api.swkoubou.com/authorize/signin';
+    var params = new URLSearchParams();
+    params.set('group_name', groupname);
+    params.set('email', mailadress);
+    params.set('password', password);
+
+    //let options = new RequestOptions({search:params});
+    return this.http.post(creUrl ,params,'')
             .map(this.extractData)
             .catch(this.handleError);
   }
@@ -69,10 +92,90 @@ export class RequestService {
     params.set('gender', Sex);
     params.set('password', Password);
 
-    //let options = new RequestOptions({search:params});
     return this.http.post(creUrl ,params,'')
             .map(this.extractData)
             .catch(this.handleError);
+  }
+
+  group_search(Groupname:string):Observable<string[]>{
+    let creUrl = 'http://gestion2api.swkoubou.com/groups/' + Groupname;
+
+    return this.http.get(creUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
+  enter(token:string):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/me/work/enter';
+    return this.http.post(monthUrl,'', options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
+  logout(token:string):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/me/work/exit';
+    return this.http.post(monthUrl,'', options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
+  getstress(token:string, id:number):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/' + id +'/stress';
+    return this.http.get(monthUrl, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
+  getworktime(token:string, id:number):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/' + id +'/attendance_records';
+    return this.http.get(monthUrl, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
+  ChangeUserName(token:string, firstname:string, lastname):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    var params = new URLSearchParams();
+    params.set('first_name', firstname);
+    params.set('last_name', lastname);
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/me';
+    return this.http.put(monthUrl,params, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
+  create_user(Mailadress:string,Password:string,Firstname:string,Lastname:string,Gender:string, token:string):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let creUrl = 'http://gestion2api.swkoubou.com/users';
+    var params = new URLSearchParams();
+    params.set('email', Mailadress);
+    params.set('first_name', Firstname);
+    params.set('last_name', Lastname);
+    params.set('gender', Gender);
+    params.set('password', Password);
+
+    return this.http.post(creUrl ,params, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
+  getuserlist(token:string):Observable<string[]>{
+    let headers = new Headers({'Authorization':"Bearer " + token});
+    let options = new RequestOptions({headers:headers});
+    let monthUrl = 'http://gestion2api.swkoubou.com/users';
+    return this.http.get(monthUrl, options)
+                  .map(this.extractData)
+                  .catch(this.handleError);
   }
 
 

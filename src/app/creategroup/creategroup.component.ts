@@ -22,6 +22,7 @@ export class CreategroupComponent implements OnInit {
   Sex:string;
 
   error:string = '';
+  Success:boolean = false;
 
   UserLogin():void{
     if(!this.MailAdress || !this.PassWord || !this.GroupName || !this.FirstName || !this.LastName || !this.Sex){
@@ -30,7 +31,7 @@ export class CreategroupComponent implements OnInit {
     }
 
     this.request.create_group(this.MailAdress, this.PassWord, this.GroupName, this.FirstName, this.LastName, this.Sex).subscribe(
-      result => console.log(result),
+      result => this.Result_Process(result),
       error => console.log(error)
     );
   }
@@ -38,4 +39,13 @@ export class CreategroupComponent implements OnInit {
   Back_Page():void{
   this.router.navigate(['/']);
   }
+
+  Result_Process(result:any){
+    if(result.code){
+      this.error = 'グループ名が重複しているので作成できません';
+      return;
+    }
+    this.Success = true;
+  }
+
 }

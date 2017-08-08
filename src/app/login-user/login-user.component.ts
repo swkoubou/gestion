@@ -21,22 +21,28 @@ export class LoginUserComponent implements OnInit {
 
   UserLogin():void{
     if(!this.MailAdress || !this.PassWord){
-      this.Error = 'ユーザーネームかパスワードが正しくありません';
+      this.Error = 'ユーザーネームかパスワードが入力されていません';
       return;
     }
-    window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228Q3J&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+    var group = sessionStorage.getItem('GroupName');
 
-    /*this.authService.login(this.username,this.pass).subscribe(
-      (result:any) => {
-        sessionStorage.setItem('backend_token',result.access_token);
-        sessionStorage.setItem('username',result.username);
-        window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2288HW&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
-        //'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2288HW&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
-        // 規制時用
-        // window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228965&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
-      },
-      error => this.fal(error)
-    );*/
+
+    this.request.login(this.MailAdress,this.PassWord, group).subscribe(
+      (result:any) => this.Result_Process(result),
+      error => console.log(error)
+    );
+  }
+
+  Result_Process(result:any){
+    if(result.code){
+      this.Error = 'メールアドレスかパスワードが正しくありません';
+      return;
+    }
+    console.log(result);
+    sessionStorage.setItem('token',result.token);
+    sessionStorage.setItem('userid',result.id);
+    sessionStorage.setItem('username',result.first_name + " " + result.last_name);
+    window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228Q3J&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fboot&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
   }
 
   Back_Page():void{

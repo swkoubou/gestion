@@ -5,7 +5,7 @@
 	     <thead>
 			  <tr>
 				  <th>氏名</th>
-		      <th>心拍数</th>
+		      <th>性別</th>
 			    <th>ストレス</th>
           <th>勤務時間</th>
         </tr>
@@ -13,11 +13,10 @@
 
 	     <tbody>
         <tr *ngFor="let Emp of VisibleList" >
-          <td>{{Emp.Name}}</td>
-          <td>{{Emp.Stress}}</td>
-          <td *ngIf='Emp.Authority == false'>有</td>
-          <td *ngIf='Emp.Authority == true'>無</td>
-          <td>{{Emp.Time}}</td>
+          <td>{{Emp.first_name}}</td>
+          <td>{{Emp.gender}}</td>
+          <td>{{Emp.last_name}}</td>
+          <td>{{Emp.group_id}}</td>
         </tr>
 	    </tbody>
 

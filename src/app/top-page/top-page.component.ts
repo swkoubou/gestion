@@ -15,14 +15,17 @@ import { SettingComponent } from './../setting/setting.component';
 })
 export class TopPageComponent implements OnInit {
 
-  Token:string ="";
+  FitbitToken:string ="";
+  BackToken:string ="";
   Admin:boolean = true;
 
   User:any = {
-    Name : "野獣",
+    Name : "",
     Weight:0,
     Height:0,
-    Stress:true
+    Stress:true,
+    ImageSrc:"",
+    Id:0
   }
   public ListView:boolean = true;
   public TopAdmin:boolean = false;
@@ -30,13 +33,21 @@ export class TopPageComponent implements OnInit {
 
   constructor(private authService:RequestService,
               private router:Router,
-              public cookie: CookieService) { }
+              public cookie: CookieService) {
+                if(!sessionStorage.getItem("token")){
+                  this.router.navigate(['/']);
+                }
+                this.FitbitToken = this.cookie.get("access_token");
+                this.BackToken = sessionStorage.getItem("token");
+                this.User.Name = sessionStorage.getItem("username");
+                this.User.Id = sessionStorage.getItem("userid");
+                this.User.GroupId = sessionStorage.getItem("GroupId");
+
+ }
 
 
   ngOnInit() {
-    this.Token = this.cookie.get("access_token");
-
-    this.authService.getProfile(this.Token).subscribe(
+    this.authService.getProfile(this.FitbitToken).subscribe(
       result => this.setProfile(result),
       error => console.log(error)
     );
@@ -61,12 +72,39 @@ export class TopPageComponent implements OnInit {
   }
 
   Change_Logout():void{
-    this.router.navigate(['/']);
+    this.authService.logout(this.BackToken).subscribe(
+      result => {
+        sessionStorage.clear();
+        this.router.navigate(['/']);
+
+      },
+      error => console.log(error)
+    );
   }
 
   setProfile(data:any[]):void{
     console.log(data);
     this.User.Weight = data["user"].weight;
     this.User.Height = data["user"].height;
+    this.User.ImageSrc = data["user"].avatar;
+
+    this.authService.putProfile(this.BackToken, data["user"].encodedId, this.FitbitToken).subscribe(
+      result => this.GetStress(),
+      error => console.log(error)
+    );
+  }
+
+  GetStress():void{
+    this.authService.GetStress(this.BackToken).subscribe(
+      result => this.enter(),
+      error => console.log(error)
+    );
+  }
+
+  enter():void{
+    this.authService.enter(this.BackToken).subscribe(
+      result => console.log(result),
+      error => console.log(error)
+    );
   }
 }
