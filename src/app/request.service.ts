@@ -33,7 +33,7 @@ export class RequestService {
   getMonth(token:string,day:string):Observable<string[]>{
     let headers = new Headers({'Authorization':"Bearer " + token});
     let options = new RequestOptions({headers:headers});
-    let monthUrl = 'https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1min.json';//this.StepsUrl + day + "/1m.json";
+    let monthUrl = 'http://gestion2api.swkoubou.com/users/me/attendance_records';
     return this.http.get(monthUrl,options)
                   .map(this.extractData)
                   .catch(this.handleError);

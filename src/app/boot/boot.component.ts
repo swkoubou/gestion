@@ -8,13 +8,13 @@ import {CookieService, CookieOptionsArgs} from 'angular2-cookie/core';
   styleUrls: ['./boot.component.css']
 })
 export class BootComponent implements OnInit {
-  token:any;
+
   constructor(private router:Router,
               private route:ActivatedRoute,
               public cookie: CookieService) { }
 
+  //アクセストークンをクッキーに格納する
   ngOnInit(){
-    console.log(location.href);
     var p = [];
     var pp = window.location.href.substring(1).split('#');
     var ppp = pp[1].split('&');
@@ -29,6 +29,7 @@ export class BootComponent implements OnInit {
     this.router.navigate(['/toppage']);
   }
 
+  //クッキーを格納した日付を記録する
   public getToday() {
       var date = new Date();
       let YYYY = date.getFullYear();
@@ -44,6 +45,7 @@ export class BootComponent implements OnInit {
       return Wdy+", "+DD+" "+Mon+" "+YYYY+" "+HH+":"+MM+":"+SS+" GMT";
     }
 
+    //１桁の場合0で埋める
     public zero(num) {
       num += "";
       if (num.length === 1) {

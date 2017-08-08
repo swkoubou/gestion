@@ -83,7 +83,6 @@ export class TopPageComponent implements OnInit {
   }
 
   setProfile(data:any[]):void{
-    console.log(data);
     this.User.Weight = data["user"].weight;
     this.User.Height = data["user"].height;
     this.User.ImageSrc = data["user"].avatar;
@@ -103,7 +102,7 @@ export class TopPageComponent implements OnInit {
 
   enter():void{
     this.authService.enter(this.BackToken).subscribe(
-      result => console.log(result),
+      result => "",
       error => console.log(error)
     );
   }

@@ -13,6 +13,8 @@ declare var google: any;
 export class ListviewComponent implements OnInit {
   User:string = "";
   Token:string ="";
+  BackToken:string = '';
+  WorkTime:any = [];
 
   public barChartType:string = 'bar';
   public lineChartType:string = 'line';
@@ -56,17 +58,19 @@ export class ListviewComponent implements OnInit {
     }
   }
 
-  public monthGraph(data:string[]):void {
-    var StartTime = data["activities-heart-intraday"]["dataset"]["100"].time;
-    var StartSecond = 3600 * (parseInt(StartTime[0]) * 10 + parseInt(StartTime[1])) + 60 * (parseInt(StartTime[3]) * 10 + parseInt(StartTime[4])) + parseInt(StartTime[6]) * 10 + parseInt(StartTime[7]);
+  public monthGraph(data:any[]):void {
+    var date = [];
+    for(var i = 0; i < data.length-1; i++){
+      data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
+      date[i] = new Date(data[i].begin);
+      date[i].setHours(date[i].getHours() - 9);
+      data[i].id = data[i].id /1000 / 3600;
+      this.WorkTime[i] = "";
 
-    var EndTime = data["activities-heart-intraday"]["dataset"][data["activities-heart-intraday"]["dataset"].length - 1].time;
-    var EndSecond = 3600 * (parseInt(EndTime[0]) * 10 + parseInt(EndTime[1])) + 60 * (parseInt(EndTime[3]) * 10 + parseInt(EndTime[4])) + parseInt(EndTime[6]) * 10 + parseInt(EndTime[7]);
+      this.WorkTime[i] = [new Date(date[i].getFullYear(),date[i].getMonth(),date[i].getDate()),  parseFloat(data[i].id.toFixed(2))];
+    }
 
-    var WorkTime = (EndSecond - StartSecond) / 3600;
-    console.log(WorkTime);
-
-
+    google.charts.setOnLoadCallback(() => this.drawChart());
   }
 
   public zero(num) {
@@ -88,37 +92,22 @@ export class ListviewComponent implements OnInit {
 
   ngOnInit() {
     this.Token = this.cookie.get("access_token");
+    this.BackToken = sessionStorage.getItem("token");
+
     let today = this.getToday();
 
-    /*this.authService.getWeekHeartRate(this.token, today).subscribe(
-      result => this.WeekHeartRate(result),
-      error => console.log(error)
-    );
-    this.authService.getWeekSteps(this.token,today).subscribe(
-      hosu => this.WeekSteps(hosu),
-      error => console.log(error)
-    );*/
-    this.authService.getMonth(this.Token,today).subscribe(
+    this.authService.getMonth(this.BackToken,today).subscribe(
       hosu => this.monthGraph(hosu),
       error => console.log(error)
     );
-    google.charts.setOnLoadCallback(() => this.drawChart());
   }
 
   drawChart() {
     var dataTable = new google.visualization.DataTable();
     dataTable.addColumn({ type: 'date', id: 'Date' });
     dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
-    dataTable.addRows([
-            [ new Date(2017, 1, 3), 3 ],
-            [ new Date(2017, 2, 5), 38705 ],
-            [ new Date(2017, 3, 12), 38210 ],
-            [ new Date(2017, 4, 13), 38029 ],
-            [ new Date(2017, 5, 19), 38823 ],
-            [ new Date(2017, 6, 23), 38345 ],
-            [ new Date(2017, 7, 24), 38436 ],
-            [ new Date(2017, 7, 30), 38447 ]
-    ]);
+    dataTable.addRows(this.WorkTime);
+
 
     var options = {
       calendar: { cellSize: 14 },

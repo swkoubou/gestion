@@ -1,6 +1,9 @@
 # Gestion
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+[Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.を使ってください
+
+ダウンロードしたら `npm install` を実行。その後 `npm install angular2-cookie` を実行してください
+
 
 ## Development server
 

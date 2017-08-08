@@ -28,7 +28,6 @@ export class TopAdminComponent implements OnInit {
   }
 
   setProfile(result:any){
-    console.log(result);
     this.EmployeeList = result;
     for(var i = 0; i < result.length; i++){
       this.EmployeeList[i].first_name = result[i].first_name + " " + result[i].last_name;
@@ -66,15 +65,26 @@ export class TopAdminComponent implements OnInit {
   }
   GetWorkTime(id:number,i:number):void{
       this.authService.getworktime(this.BackToken,id).subscribe(
-        result => {
-          if(!result){
-            this.EmployeeList[i].group_id = '0';
-          }else{
-            this.EmployeeList[i].group_id = '13';
-          }
-        },
+        result =>this.WorkTime(result, i),
         error => console.log(error)
       );
+    }
+
+ WorkTime(data:any[], p:number):void {
+   console.log(data);
+    var date = [];
+    var WorkTime = 0;
+    for(var i = 0; i < data.length-1; i++){
+      data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
+      date[i] = new Date(data[i].begin);
+      date[i].setHours(date[i].getHours() - 9);
+      data[i].id = data[i].id /1000 / 3600;
+      WorkTime = 0;
+
+      WorkTime = parseFloat(data[i].id.toFixed(2));
+    }
+    this.EmployeeList[p].group_id = WorkTime;
+
     }
 
 }
