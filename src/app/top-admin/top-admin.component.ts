@@ -72,16 +72,16 @@ export class TopAdminComponent implements OnInit {
  WorkTime(data: any[], p: number): void {
    console.log(data);
     const date = [];
-    const workTime = 0;
+    let WorkTime = 0;
     for (let i = 0; i < data.length - 1; i++) {
       data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
       date[i] = new Date(data[i].begin);
       date[i].setHours(date[i].getHours() - 9);
       data[i].id = data[i].id / 1000 / 3600;
-      workTime = parseFloat(data[i].id.toFixed(2));
+      WorkTime = 0;
+      WorkTime = parseFloat(data[i].id.toFixed(2));
     }
-    this.EmployeeList[p].group_id = workTime;
-
-    }
+    this.EmployeeList[p].group_id = WorkTime;
+}
 
 }
