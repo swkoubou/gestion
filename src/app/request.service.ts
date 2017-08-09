@@ -11,6 +11,7 @@ export class RequestService {
   private backurl = 'https://gestion2api.swkoubou.com';
   constructor( private http: Http, private jsonp: Jsonp) { }
 
+  //Fitbitから１週間の心拍数を取得
   getWeekHeartRate(token: string, day: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -20,6 +21,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //Fitbitから１週間の歩数を取得
   getWeekSteps(token: string, day: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -29,6 +31,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //サーバーから勤務時間を取得
   getMonth(token: string, day: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -38,6 +41,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //Fitbitからプロフィールを取得
   getProfile(token: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -47,6 +51,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //FitbitのID、アクセストークンをサーバーに格納
   putProfile(token: string, fitbitid: string, fitbittoken: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -59,6 +64,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //管理者からユーザーデータを変更
   AdminChange(token: string, password: string, email: string, id: number): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -71,6 +77,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //自分のストレス値を取得
   GetStress(token: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -80,6 +87,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //ログイン
   login(mailadress: string, password: string, groupname: string): Observable<string[]> {
     const creUrl = this.backurl + '/authorize/signin';
     const params = new URLSearchParams();
@@ -93,6 +101,7 @@ export class RequestService {
             .catch(this.handleError);
   }
 // tslint:disable-next-line:max-line-length
+// グループを作成
   create_group(Mailadress: string, Password: string, Groupname: string, Firstname: string, Lastname: string, Sex: string):Observable<string[]> {
     const creUrl = this.backurl + '/groups';
     const params = new URLSearchParams();
@@ -108,6 +117,7 @@ export class RequestService {
             .catch(this.handleError);
   }
 
+  //グループ名が存在してるか調べられる
   group_search(Groupname: string): Observable<string[]> {
     const creUrl = this.backurl + '/groups/' + Groupname;
 
@@ -116,6 +126,7 @@ export class RequestService {
             .catch(this.handleError);
   }
 
+  //出勤
   enter(token: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -125,6 +136,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //退勤
   logout(token: string): Observable<string[]>{
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -134,6 +146,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //指定したユーザのストレスを取得
   getstress(token: string, id: number): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -143,6 +156,7 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
+  //指定したユーザの勤務時間を取得
   getworktime(token: string, id: number): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
@@ -152,7 +166,8 @@ export class RequestService {
                   .catch(this.handleError);
   }
 
-  ChangeUserName(token: string, firstname: string, lastname): Observable<string[]>{
+  //自分の名前を変更
+  ChangeUserName(token: string, firstname: string, lastname:string): Observable<string[]>{
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});
     const params = new URLSearchParams();
@@ -163,6 +178,8 @@ export class RequestService {
                   .map(this.extractData)
                   .catch(this.handleError);
   }
+
+  //　管理者からユーザーを新規で作成
 // tslint:disable-next-line:max-line-length
   create_user(Mailadress: string, Password: string, Firstname: string, Lastname: string, Gender: string, token: string): Observable<string[]>{
     const headers = new Headers({'Authorization': 'Bearer ' + token});
@@ -180,6 +197,7 @@ export class RequestService {
             .catch(this.handleError);
   }
 
+  //ユーザーリストを取得
   getuserlist(token: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
     const options = new RequestOptions({headers: headers});

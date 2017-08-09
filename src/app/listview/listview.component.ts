@@ -62,7 +62,7 @@ export class ListviewComponent implements OnInit {
   // 勤務時間を計測
   public WorkTimes(data: any[]): void {
     const date = [];
-    for (let i = 0; i < data.length - 1; i++) {
+    for (let i = 0; data[i].end !== null; i++) {
       data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
       date[i] = new Date(data[i].begin);
       date[i].setHours(date[i].getHours() - 9);
@@ -70,6 +70,21 @@ export class ListviewComponent implements OnInit {
       this.WorkTime[i] = '';
       this.WorkTime[i] = [new Date(date[i].getFullYear(),date[i].getMonth(),date[i].getDate()),  parseFloat(data[i].id.toFixed(2))];
     }
+    
+    var box = this.WorkTime;
+    this.WorkTime = [];
+    var total = 0,key = 0;
+
+    for(let i = 0; i < box.length; i++){
+      if(box[i][0].getDate() == box[key][0].getDate()){
+        total += box[i][1];
+      }else{
+        this.WorkTime.push([box[key][0], total]);
+        total = box[i][1];
+        key = i;
+      }
+    }
+    this.WorkTime.push([box[key][0], total]);
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 
@@ -99,9 +114,19 @@ export class ListviewComponent implements OnInit {
 
     const today = this.getToday();
 
+    /*this.authService.getWeekHeartRate(this.Token, today).subscribe(
+       result => this.WeekHeartRate(result),
+       error => console.log(error)
+     );
+
+    this.authService.getWeekSteps(this.Token,today).subscribe(
+       hosu => this.WeekSteps(hosu),
+       error => console.log(error)
+     );*/
+
     // 勤務時間を取得
     this.authService.getMonth(this.BackToken, today).subscribe(
-      hosu => this.WorkTime(hosu),
+      hosu => this.WorkTimes(hosu),
       error => console.log(error)
     );
   }
