@@ -7,26 +7,26 @@ import { TopPageComponent } from './top-page/top-page.component';
 import { BootComponent } from './boot/boot.component';
 import { CreategroupComponent} from './creategroup/creategroup.component';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   {
-    path:'',
-    component:LoginGroupComponent
+    path: '',
+    component: LoginGroupComponent
   },
   {
-    path:'loginuser',
-    component:LoginUserComponent
+    path: 'loginuser',
+    component: LoginUserComponent
   },
   {
-    path:'toppage',
-    component:TopPageComponent
+    path: 'toppage',
+    component: TopPageComponent
   },
   {
-    path:'boot',
-    component:BootComponent
+    path: 'boot',
+    component: BootComponent
   },
   {
-    path:'creategroup',
-    component:CreategroupComponent
+    path: 'creategroup',
+    component: CreategroupComponent
   }
 ];
 

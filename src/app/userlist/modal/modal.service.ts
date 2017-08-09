@@ -11,21 +11,21 @@ export class ModalService {
 
   constructor(private resolver: ComponentFactoryResolver) { }
 
-  //モーダルの展開
+  // モーダルの展開
   open(data: any, provider: Provider): void {
-    //データがなければ何もしない
+    // データがなければ何もしない
     if (!data) {
       return;
     }
 
-    //プロバイダ用のデータに作り直す
+    // プロバイダ用のデータに作り直す
     const providers = ReflectiveInjector.resolve([provider]);
-    //プロバイダからインジェクタを作成
+    // プロバイダからインジェクタを作成
     const injector = ReflectiveInjector.fromResolvedProviders(providers, this.vcr.parentInjector);
 
-    //コンポーネント複製する。コンストラクタでサービスをやることと同じ
+    // コンポーネント複製する。コンストラクタでサービスをやることと同じ
     const factory = this.resolver.resolveComponentFactory(data);
-    //コンポーネント作成
+    // コンポーネント作成
     const component = this.vcr.createComponent(factory, this.vcr.length, injector);
 
     // if other modal container is created

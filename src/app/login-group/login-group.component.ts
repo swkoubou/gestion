@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,} from '@angular/router';
-import { RequestService} from '../request.service';
+import { Router } from '@angular/router';
+import { RequestService } from '../request.service';
 
 @Component({
   selector: 'app-login-group',
@@ -8,17 +8,16 @@ import { RequestService} from '../request.service';
   styleUrls: ['./login-group.component.css']
 })
 export class LoginGroupComponent implements OnInit {
-  GroupName:string;
-  Error:string;
+  GroupName: string;
+  Error: string;
 
-  constructor(private router:Router,
-              private request:RequestService) { }
+  constructor(private router: Router, private request: RequestService) { }
 
   ngOnInit() {
   }
 
-  Change_Page():void{
-    if(!this.GroupName){
+  Change_Page(): void {
+    if (!this.GroupName) {
       this.Error = 'グループ名を入力してください';
       return;
     }
@@ -29,8 +28,8 @@ export class LoginGroupComponent implements OnInit {
     );
   }
 
-  Result_Process(result:any){
-    if(result.code){
+  Result_Process(result: any) {
+    if (result.code) {
       this.Error = 'グループ名が存在しません';
       return;
     }
@@ -39,7 +38,7 @@ export class LoginGroupComponent implements OnInit {
     this.router.navigate(['/loginuser']);
   }
 
-  Change_CreateGroup():void{
+  Change_CreateGroup(): void {
     this.router.navigate(['/creategroup']);
   }
 }

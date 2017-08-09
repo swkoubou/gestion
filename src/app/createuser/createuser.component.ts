@@ -1,6 +1,6 @@
-import { Component,OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params}  from '@angular/router';
-import { RequestService} from './../request.service';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { RequestService } from './../request.service';
 
 @Component({
   selector: 'app-createuser',
@@ -8,23 +8,22 @@ import { RequestService} from './../request.service';
   styleUrls: ['./createuser.component.css']
 })
 export class CreateuserComponent implements OnInit{
-  Error:string;
-  MailAdress:string;
-  PassWord:string;
-  Gender:string;
-  LastName:string;
-  FirstName:string;
-  Token:string;
+  public Error: string;
+  public MailAdress: string;
+  public PassWord: string;
+  public Gender: string;
+  public LastName: string;
+  public FirstName: string;
+  public Token: string;
 
-constructor(private request:RequestService,
-                private router:Router){
-                  this.Token = sessionStorage.getItem("token");
-                }
+constructor(private request: RequestService, private router: Router) {
+  this.Token = sessionStorage.getItem('token');
+}
 
-  ngOnInit(){}
+  ngOnInit() {}
 
-  Create_User():void{
-    if(!this.MailAdress || !this.PassWord || !this.FirstName || !this.LastName || !this.Gender){
+  Create_User(): void {
+    if (!this.MailAdress || !this.PassWord || !this.FirstName || !this.LastName || !this.Gender) {
       this.Error = '未入力項目があります';
       return;
     }
@@ -36,8 +35,8 @@ constructor(private request:RequestService,
   }
 
 
-  Result_Process(result:any){
-    if(result.code){
+  Result_Process(result: any) {
+    if (result.code) {
       this.Error = 'この入力データでは作成できません';
       return;
     }

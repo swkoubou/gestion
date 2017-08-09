@@ -13,7 +13,7 @@ export class RequestService {
 
   getWeekHeartRate(token: string, day: string): Observable<string[]> {
     const headers = new Headers({'Authorization': 'Bearer ' + token});
-    const options = new RequestOptions({headers:headers});
+    const options = new RequestOptions({headers: headers});
     const heartRateUrl = this.HeartRateUrl + day + '/7d.json';
     return this.http.get(heartRateUrl, options)
                   .map(this.extractData)

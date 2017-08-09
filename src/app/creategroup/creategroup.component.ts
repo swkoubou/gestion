@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,} from '@angular/router';
+import { Router } from '@angular/router';
 import { RequestService} from '../request.service';
 
 @Component({
@@ -8,25 +8,25 @@ import { RequestService} from '../request.service';
   styleUrls: ['./creategroup.component.css']
 })
 export class CreategroupComponent implements OnInit {
-  constructor(private router:Router,
-              private request:RequestService) { }
+
+  // 入力フォームを格納する変数
+  public MailAdress: string;
+  public PassWord: string;
+  public GroupName: string;
+  public FirstName: string;
+  public LastName: string;
+  public Sex: string;
+  public error: string = '';
+  public Success: boolean = false;
+
+  constructor(private router: Router, private request: RequestService) { }
 
   ngOnInit() {
   }
 
-  //入力フォームを格納する変数
-  MailAdress:string;
-  PassWord:string;
-  GroupName:string;
-  FirstName:string;
-  LastName:string;
-  Sex:string;
-  error:string = '';
-  Success:boolean = false;
-
-  //ログイン時の処理
-  UserLogin():void{
-    if(!this.MailAdress || !this.PassWord || !this.GroupName || !this.FirstName || !this.LastName || !this.Sex){
+  // ログイン時の処理
+  UserLogin(): void {
+    if (!this.MailAdress || !this.PassWord || !this.GroupName || !this.FirstName || !this.LastName || !this.Sex){
       this.error = '未入力項目があります';
       return;
     }
@@ -37,14 +37,14 @@ export class CreategroupComponent implements OnInit {
     );
   }
 
-  //１つページを戻す
-  Back_Page():void{
+  // １つページを戻す
+  Back_Page(): void {
   this.router.navigate(['/']);
   }
 
-  //ログインデータを送信した後の処理
-  Result_Process(result:any){
-    if(result.code){
+  // ログインデータを送信した後の処理
+  Result_Process(result: any) {
+    if (result.code){
       this.error = 'グループ名が重複しているので作成できません';
       return;
     }
