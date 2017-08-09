@@ -18,6 +18,7 @@ export class TopAdminComponent implements OnInit {
 
   constructor(private authService: RequestService, private router: Router) {}
 
+  //ページ読み込み時にトークンを取得、またグループに所属しているユーザーの一覧を取得
   ngOnInit() {
     this.BackToken = sessionStorage.getItem('token');
     this.authService.getuserlist(this.BackToken).subscribe(
@@ -26,6 +27,7 @@ export class TopAdminComponent implements OnInit {
     );
   }
 
+  //ページに表示するデータを用意。ストレス値や勤務時間はその人のidを使ってここで持ってきてる
   setProfile(result: any) {
     this.EmployeeList = result;
     for (let i = 0; i < result.length; i++) {
@@ -46,10 +48,12 @@ export class TopAdminComponent implements OnInit {
 
   }
 
+  //一番最初に行う関数。表示用の配列と編集用の配列を別に分けている
   AllVisible(): void {
     this.VisibleList = this.EmployeeList;
   }
 
+  //ストレスをサーバーから持ってきてる。
   GetStress(id: number, i: number): void {
     this.authService.getstress(this.BackToken, id).subscribe(
       result => {
@@ -62,6 +66,8 @@ export class TopAdminComponent implements OnInit {
       error => console.log(error)
     );
   }
+
+  //勤務時間をサーバーから持ってくる
   GetWorkTime(id: number, i: number): void {
       this.authService.getworktime(this.BackToken, id).subscribe(
         result => this.WorkTime(result, i),
@@ -69,8 +75,8 @@ export class TopAdminComponent implements OnInit {
       );
     }
 
+    //持ってきた勤務時間のデータを表示できるように整形している
  WorkTime(data: any[], p: number): void {
-   console.log(data);
     const date = [];
     let WorkTime = 0;
     for (let i = 0; i < data.length - 1; i++) {

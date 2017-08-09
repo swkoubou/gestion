@@ -20,6 +20,7 @@ export class UserlistComponent implements OnInit {
 
   constructor(private authService: RequestService, private router: Router, private modal: ModalService) {}
 
+  //いつもの、トークン取得
   ngOnInit() {
     this.BackToken = sessionStorage.getItem('token');
     this.authService.getuserlist(this.BackToken).subscribe(
@@ -28,6 +29,7 @@ export class UserlistComponent implements OnInit {
     );
   }
 
+  //プロフィールをサーバーから持ってきたらそれを整形
   setProfile(result: any) {
     this.EmployeeList = result;
     for (let i = 0; i < result.length; i++) {
@@ -51,10 +53,12 @@ export class UserlistComponent implements OnInit {
 
   }
 
+  //top-adminでもやったやつ
   AllVisible(): void {
     this.VisibleList = this.EmployeeList;
   }
 
+  //管理者をそーと
   AdminSort(): void {
     this.VisibleList = [];
     let counter = 0;
@@ -65,6 +69,7 @@ export class UserlistComponent implements OnInit {
     }
   }
 
+  //モーダルに値を渡す
   EmpSetting(data: any): void {
     // 受け渡すようにデータ整形
     console.log(data);

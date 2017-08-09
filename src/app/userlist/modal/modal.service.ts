@@ -37,6 +37,7 @@ export class ModalService {
     this.contentSource.next(true);
   }
 
+  //モーダルを閉じる
   close(): void {
     if (this.currentComponent) {
       this.currentComponent.destroy();

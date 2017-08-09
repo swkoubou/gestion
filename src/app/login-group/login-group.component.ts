@@ -16,6 +16,7 @@ export class LoginGroupComponent implements OnInit {
   ngOnInit() {
   }
 
+  //入力したグループ名が存在するか検索、あればユーザーログインに移動
   Change_Page(): void {
     if (!this.GroupName) {
       this.Error = 'グループ名を入力してください';
@@ -28,6 +29,7 @@ export class LoginGroupComponent implements OnInit {
     );
   }
 
+  //グループ名検索後の処理、グループ名は後のユーザーリスト取得に必要なのでセッションストレージに格納
   Result_Process(result: any) {
     if (result.code) {
       this.Error = 'グループ名が存在しません';

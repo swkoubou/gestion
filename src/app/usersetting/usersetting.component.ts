@@ -17,6 +17,7 @@ export class UsersettingComponent implements OnInit {
 
   ngOnInit() {}
 
+  //ユーザーデータを更新。中身の流れはログイン時などのメソッドとほぼ同じ
   Change_User(): void {
     if (!this.FirstName || !this.Lastname) {
       this.Error = '未入力箇所があります';

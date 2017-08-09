@@ -15,10 +15,12 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private modal: ModalService) { }
 
+  //描画後に処理を行う
   ngAfterViewInit() {
     this.modal.vcr = this.vcr;
   }
 
+  //サブスクリプションを作成
   ngOnInit() {
     this.subscription = this.modal.content$.subscribe(
       value => {
@@ -30,14 +32,17 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
+  //イベントを中断させる
   containerClick($event) {
     $event.stopPropagation();
   }
 
+  //モーダルを閉じる
   close() {
     this.modal.close();
   }
 
+  //サブスクリプションを削除する
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

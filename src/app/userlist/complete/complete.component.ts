@@ -25,6 +25,7 @@ export class CompleteComponent {
     this.id = t.id;
   }
 
+  //ユーザー情報の変更を行う
   Change_User(): void {
     if (!this.password || !this.email) {
       this.Error = '未入力箇所があります';
@@ -37,6 +38,7 @@ export class CompleteComponent {
     );
   }
 
+  //モーダルを閉じる
   ModalClose(): void {
     this.modal.close();
   }

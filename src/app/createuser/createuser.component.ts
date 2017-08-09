@@ -8,6 +8,7 @@ import { RequestService } from './../request.service';
   styleUrls: ['./createuser.component.css']
 })
 export class CreateuserComponent implements OnInit{
+  //フォームの入力データを格納するための変数達
   public Error: string;
   public MailAdress: string;
   public PassWord: string;
@@ -16,12 +17,14 @@ export class CreateuserComponent implements OnInit{
   public FirstName: string;
   public Token: string;
 
+  //画面表示した時にセッションストレージからトークンを取得
 constructor(private request: RequestService, private router: Router) {
   this.Token = sessionStorage.getItem('token');
 }
 
   ngOnInit() {}
 
+  //入力したデータを使ってデータベースに登録
   Create_User(): void {
     if (!this.MailAdress || !this.PassWord || !this.FirstName || !this.LastName || !this.Gender) {
       this.Error = '未入力項目があります';
@@ -34,7 +37,7 @@ constructor(private request: RequestService, private router: Router) {
     );
   }
 
-
+  //データベースに登録を行った時の処理、エラー時でもここに行く
   Result_Process(result: any) {
     if (result.code) {
       this.Error = 'この入力データでは作成できません';

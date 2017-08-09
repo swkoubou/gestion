@@ -13,6 +13,7 @@ import { CreateuserComponent } from './../createuser/createuser.component';
   styleUrls: ['./setting.component.css'],
 })
 export class SettingComponent implements OnInit {
+  //表示するコンポーネントをbooleanで制御する
   public Admin: boolean = true;
   public UserList: boolean = false;
   public UserSetting: boolean = true;
@@ -26,6 +27,7 @@ export class SettingComponent implements OnInit {
   ngOnInit() {
   }
 
+  //下全て表示するコンポーネントを切り替える処理
   Change_UserSetting(): void {
     this.UserSetting = true;
     this.UserList = false;

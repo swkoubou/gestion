@@ -15,10 +15,12 @@ import { SettingComponent } from './../setting/setting.component';
 })
 export class TopPageComponent implements OnInit {
 
+  //認証用のトークンが入ってる
   public FitbitToken: string = '';
   public BackToken: string = '';
   public Admin: boolean = true;
 
+  //ユーザー
   public User: any = {
     Name : '',
     Weight: 0,
@@ -27,11 +29,15 @@ export class TopPageComponent implements OnInit {
     ImageSrc: '',
     Id: 0
   }
+
+  //表示するコンポーネントをbooleanで制御
   public ListView: boolean = true;
   public TopAdmin: boolean = false;
   public Setting: boolean = false;
 
+  //セッションストレージからトークンなど一式用意
   constructor(private authService: RequestService, private router: Router, public cookie: CookieService) {
+                //ログイン出来ていないユーザーを通さないようにする
                 if (!sessionStorage.getItem('token')) {
                   this.router.navigate(['/']);
                 }
@@ -43,7 +49,7 @@ export class TopPageComponent implements OnInit {
 
  }
 
-
+ //ngOnInitはページが読み込み終わったら実行、constructorはページを読み込むと同時に
   ngOnInit() {
     this.authService.getProfile(this.FitbitToken).subscribe(
       result => this.setProfile(result),
@@ -51,6 +57,7 @@ export class TopPageComponent implements OnInit {
     );
   }
 
+  //下３つは表示コンポーネントを変更するメソッド
   Change_Setting(): void {
     this.Setting = true;
     this.ListView = false;
@@ -69,6 +76,7 @@ export class TopPageComponent implements OnInit {
     this.TopAdmin = false;
   }
 
+  //ログアウトの処理。セッションストレージを全て捨てる。これでブラウザバック出来ないようにする
   Change_Logout(): void {
     this.authService.logout(this.BackToken).subscribe(
       result => {
@@ -80,6 +88,7 @@ export class TopPageComponent implements OnInit {
     );
   }
 
+  //左のバーに表示するデータをFitbitから取得
   setProfile(data: any[]): void {
     this.User.Weight = data['user'].weight;
     this.User.Height = data['user'].height;
@@ -91,6 +100,7 @@ export class TopPageComponent implements OnInit {
     );
   }
 
+  //ストレスを取得
   GetStress(): void {
     this.authService.GetStress(this.BackToken).subscribe(
       result => this.enter(),
@@ -98,6 +108,7 @@ export class TopPageComponent implements OnInit {
     );
   }
 
+  //出勤をサーバーに伝える
   enter(): void {
     this.authService.enter(this.BackToken).subscribe(
       result => '',
