@@ -21,8 +21,7 @@ export class CreategroupComponent implements OnInit {
 
   constructor(private router: Router, private request: RequestService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   // ログイン時の処理
   UserLogin(): void {
