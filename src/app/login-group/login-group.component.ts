@@ -13,10 +13,7 @@ export class LoginGroupComponent implements OnInit {
   GroupName: string;
   Error: string;
 
-  constructor(private router: Router, private request: RequestService, public cookie: CookieService) { }
-
-    // アクセストークンをクッキーに格納する
-  ngOnInit() {
+  constructor(private router: Router, private request: RequestService, public cookie: CookieService) {
     // URLのアンカー（#以降の部分）を取得
     var urlHash = location.hash;
 
@@ -36,6 +33,10 @@ export class LoginGroupComponent implements OnInit {
       this.cookie.put(key, value, opts);
       this.router.navigate(['/toppage']);
     }
+   }
+
+    // アクセストークンをクッキーに格納する
+  ngOnInit() {
   }
 
     // クッキーを格納した日付を記録する
