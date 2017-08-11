@@ -43,14 +43,14 @@ h1{
   margin-bottom: 1vh;
 }
 .select{
-  width: 50%;
+  width: 52%;
   font-size: 1.5vw;
   border:none;
   box-shadow: none;
   margin-bottom: 1vh;
   margin-top: 1vh;
   margin-left: 40px;
-
+  border-bottom: 1px solid #c0c0c0;
 }
 
 #buttoncmp{

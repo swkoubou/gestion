@@ -31,13 +31,14 @@
 }
 
 .select{
-  width: 50%;
+  width: 83%;
   font-size: 2vw;
   border:none;
   box-shadow: none;
-  margin-left: 40px;
+  margin-left: 0px;
   margin-bottom: 1vh;
   margin-top: 1vh;
+  border-bottom: 1px solid #c0c0c0;
 }
 
 #buttoncmp{
@@ -65,4 +66,8 @@
   color: red;
   width: 100%;
   text-align: center;
+}
+
+.form-control{
+  border-bottom: 1px solid #c0c0c0;
 }
