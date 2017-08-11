@@ -25,7 +25,7 @@ export class TopPageComponent implements OnInit {
     Name : '',
     Weight: 0,
     Height: 0,
-    Stress: true,
+    Stress: '',
     ImageSrc: '',
     Id: 0
   }
@@ -51,6 +51,10 @@ export class TopPageComponent implements OnInit {
 
  //ngOnInitはページが読み込み終わったら実行、constructorはページを読み込むと同時に
   ngOnInit() {
+    this.authService.backProfile(this.BackToken).subscribe(
+      result => this.Profile(result),
+      error => console.log(error)
+    );
     this.authService.getProfile(this.FitbitToken).subscribe(
       result => this.setProfile(result),
       error => console.log(error)
@@ -100,6 +104,13 @@ export class TopPageComponent implements OnInit {
     );
   }
 
+  //左のバーに表示するデータをFitbitから取得
+  Profile(data: any[]): void {
+    if(data["permission"] !== "admin"){
+      this.Admin = false;
+    }
+  }
+
   //ストレスを取得
   GetStress(): void {
     this.authService.GetStress(this.BackToken).subscribe(
@@ -111,6 +122,13 @@ export class TopPageComponent implements OnInit {
   //出勤をサーバーに伝える
   enter(data:any): void {
     console.log(data);
+    if(data[data.length - 1].value >= 5){
+      this.User.Stress = "要注意";
+    }else if(data[data.length - 1].value >= 2){
+      this.User.Stress = "注意";
+    }else{
+      this.User.Stress = "普通";
+    }
     this.authService.enter(this.BackToken).subscribe(
       result => '',
       error => console.log(error)

@@ -108,7 +108,7 @@ export class TopAdminComponent implements OnInit {
      }
    }
 
-   work.push(total);
+   work.push(parseFloat(total.toFixed(2)));
    this.EmployeeList[p].group_id = work[work.length - 1];
 }
 

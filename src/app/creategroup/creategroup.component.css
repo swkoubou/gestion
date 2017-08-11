@@ -43,17 +43,17 @@ h1{
   margin-bottom: 1vh;
 }
 .select{
-  width: 50%;
+  width: 52%;
   font-size: 1.5vw;
   border:none;
   box-shadow: none;
   margin-bottom: 1vh;
   margin-top: 1vh;
   margin-left: 40px;
-
+  border-bottom: 1px solid #c0c0c0;
 }
 
-#buttoncmp{
+.buttoncmp{
   margin-top: 2vh;
   display: grid;
   grid-gap:10px;
@@ -62,7 +62,7 @@ h1{
   margin-left: auto;
   margin-right: 12vw;
 }
-#buttoncmp input{
+.buttoncmp input{
   background-color: rgba(0, 0, 0, 0);
   color: #28AF78;
   font-size: 1.5vw;
@@ -73,7 +73,7 @@ h1{
   border-width: 1px;
   border-color: rgba(0, 0, 0,0);
 }
-#button_cmp input:hover{
+.buttoncmp input:hover{
   color: #00d36f;
   background-color: aliceblue;
 }

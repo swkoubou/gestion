@@ -41,6 +41,15 @@ export class RequestService {
                   .map(this.extractData)
                   .catch(this.handleError);
   }
+  //サーバーから勤務時間を取得
+    backProfile(token: string): Observable<string[]> {
+      const headers = new Headers({'Authorization': 'Bearer ' + token});
+      const options = new RequestOptions({headers: headers});
+      const monthUrl = this.backurl + '/users/me';
+      return this.http.get(monthUrl,options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+    }
 
   //Fitbitからプロフィールを取得
   getProfile(token: string): Observable<string[]> {

@@ -6,6 +6,8 @@ import { UserlistComponent } from './../userlist/userlist.component';
 import { UsersettingComponent } from './../usersetting/usersetting.component';
 import { CreateuserComponent } from './../createuser/createuser.component';
 
+import { RequestService} from './../request.service';
+
 
 @Component({
   selector: 'app-setting',
@@ -21,10 +23,23 @@ export class SettingComponent implements OnInit {
   public SelectUserSetting: boolean = true;
   public SelectCreateUser: boolean = false;
   public SelectUserList: boolean = false;
+  public BackToken:string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService:RequestService) { }
 
   ngOnInit() {
+    this.BackToken = sessionStorage.getItem('token');
+    this.authService.backProfile(this.BackToken).subscribe(
+      result => this.Profile(result),
+      error => console.log(error)
+    );
+  }
+
+  //左のバーに表示するデータをFitbitから取得
+  Profile(data: any[]): void {
+    if(data["permission"] !== "admin"){
+      this.Admin = false;
+    }
   }
 
   //下全て表示するコンポーネントを切り替える処理

@@ -14,7 +14,7 @@
       <input name="name"[(ngModel)]="LastName" class='form'  placeholder="管理者の名前">
 
       <select class="select" [(ngModel)]="Sex" name='name'>
-        <option value="" selected>性別</option>
+        <option value="" disabled selected>性別</option>
         <option value="male">男</option>
         <option value="famale">女</option>
       </select>
@@ -24,9 +24,9 @@
 
       <p id='error' *ngIf='error'>{{error}}</p>
 
-      <div id='buttoncmp'>
+      <div class='buttoncmp'>
         <input type="submit" id='login' value=" 作成 " (click)='UserLogin()'>
-        <input type="button" id='cancel' value=" キャンセル " (click)='Back_Page()'>
+        <input type="button" class='cancel' value=" キャンセル " (click)='Back_Page()'>
       </div>
     </form>
   </div>
@@ -38,8 +38,8 @@
         管理者のパスワード:{{PassWord}}<br /><br />
         この３つはログイン時に必要なので忘れないでください
     </p>
-    <div id='buttoncmp'>
-      <input type="button" id='cancel' value=" 戻る " (click)='Back_Page()'>
+    <div class='buttoncmp'>
+      <input type="button" class='cancel' value=" 戻る " (click)='Back_Page()'>
     </div>
   </div>
 </div>

@@ -17,10 +17,7 @@
 	<tr>
     <td><i class="material-icons">favorite</i></td>
     <td>ストレス</td>
-    <td>
-      <p *ngIf="User.Stress">検知しました</p>
-      <p *ngIf="!User.Stress">ないです</p>
-    </td>
+    <td>{{User.Stress}}</td>
 	</tr>
 </table>
 <footer>

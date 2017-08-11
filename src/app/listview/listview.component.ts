@@ -63,6 +63,19 @@ export class ListviewComponent implements OnInit {
   public WorkTimes(data: any[]): void {
     const date = [];
     console.log(data);
+
+    if(data.length <= 0){
+      this.WorkTime = [];
+      google.charts.setOnLoadCallback(() => this.drawChart());
+      return;
+    }
+
+    if(data[0].end == null){
+      this.WorkTime = [];
+      google.charts.setOnLoadCallback(() => this.drawChart());
+      return;
+    }
+
     for (let i = 0; i < data.length; i++) {
       if(data[i].end == null)break;
       data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
@@ -89,12 +102,13 @@ export class ListviewComponent implements OnInit {
           total -= 0.60;
         }
       }else{
-        this.WorkTime.push([box[key][0], total]);
+        this.WorkTime.push([box[key][0], parseFloat(total.toFixed(2))]);
         total = box[i][1];
         key = i;
       }
     }
-    this.WorkTime.push([box[key][0], total]);
+
+    this.WorkTime.push([box[key][0], parseFloat(total.toFixed(2))]);
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 
@@ -124,7 +138,7 @@ export class ListviewComponent implements OnInit {
 
     const today = this.getToday();
 
-    /*this.authService.getWeekHeartRate(this.Token, today).subscribe(
+    this.authService.getWeekHeartRate(this.Token, today).subscribe(
        result => this.WeekHeartRate(result),
        error => console.log(error)
      );
@@ -132,7 +146,7 @@ export class ListviewComponent implements OnInit {
     this.authService.getWeekSteps(this.Token,today).subscribe(
        hosu => this.WeekSteps(hosu),
        error => console.log(error)
-     );*/
+     );
 
     // 勤務時間を取得
     this.authService.getMonth(this.BackToken, today).subscribe(

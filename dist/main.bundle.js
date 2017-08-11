@@ -340,7 +340,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "header{\n  overflow: hidden;\n  background-color:#00E676;\n  margin: -100px 0 0 -100px;\n  padding: 110px 150px 10px 110px;\n  box-shadow: 0px 5px 5px #c0c0c0;\n  height: 20%;\n  width: 100%;\n  text-align: center;\n}\nheader img{\n  width: 10vw;\n}\n\n#container {\n  border: none;\n  max-width: 60vw;\n  max-height:95vh;\n  margin: 15vh auto;\n  background-color: #FFFFFF;\n  border-radius: 10px;\n}\n\n#container:hover {\n  box-shadow:1px 2px 5px 5px  #dbdbdb;\n}\n\n\nh1{\n  padding-left: 3vh;\n  padding-top:  3vh;\n}\n\n.form {\n  width: 50%;\n  font-size: 1.5vw;\n  padding: 10px 10px 10px 10px;\n  border:none;\n  border-bottom:1px solid #d3d3d3;\n  box-shadow: none;\n  border-width: 1px;\n  margin-left: 40px;\n  margin-bottom: 1vh;\n}\n.select{\n  width: 50%;\n  font-size: 1.5vw;\n  border:none;\n  box-shadow: none;\n  margin-bottom: 1vh;\n  margin-top: 1vh;\n  margin-left: 40px;\n\n}\n\n#buttoncmp{\n  margin-top: 2vh;\n  display: -ms-grid;\n  display: grid;\n  grid-gap:10px;\n  -ms-grid-columns: 5fr 5fr;\n      grid-template-columns: 5fr 5fr;\n  width: 20%;\n  margin-left: auto;\n  margin-right: 12vw;\n}\n#buttoncmp input{\n  background-color: rgba(0, 0, 0, 0);\n  color: #28AF78;\n  font-size: 1.5vw;\n  padding: 5px 20px 5px 20px;\n  cursor: pointer;\n  border-radius: 5px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: rgba(0, 0, 0,0);\n}\n#button_cmp input:hover{\n  color: #00d36f;\n  background-color: aliceblue;\n}\n\n#error{\n  color: red;\n  width: 100%;\n  text-align: center;\n}\n\n#successmessage{\n  text-align: center;\n  font-size: 2vw;\n}\n", ""]);
+exports.push([module.i, "header{\n  overflow: hidden;\n  background-color:#00E676;\n  margin: -100px 0 0 -100px;\n  padding: 110px 150px 10px 110px;\n  box-shadow: 0px 5px 5px #c0c0c0;\n  height: 20%;\n  width: 100%;\n  text-align: center;\n}\nheader img{\n  width: 10vw;\n}\n\n#container {\n  border: none;\n  max-width: 60vw;\n  max-height:95vh;\n  margin: 15vh auto;\n  background-color: #FFFFFF;\n  border-radius: 10px;\n}\n\n#container:hover {\n  box-shadow:1px 2px 5px 5px  #dbdbdb;\n}\n\n\nh1{\n  padding-left: 3vh;\n  padding-top:  3vh;\n}\n\n.form {\n  width: 50%;\n  font-size: 1.5vw;\n  padding: 10px 10px 10px 10px;\n  border:none;\n  border-bottom:1px solid #d3d3d3;\n  box-shadow: none;\n  border-width: 1px;\n  margin-left: 40px;\n  margin-bottom: 1vh;\n}\n.select{\n  width: 52%;\n  font-size: 1.5vw;\n  border:none;\n  box-shadow: none;\n  margin-bottom: 1vh;\n  margin-top: 1vh;\n  margin-left: 40px;\n  border-bottom: 1px solid #c0c0c0;\n}\n\n.buttoncmp{\n  margin-top: 2vh;\n  display: -ms-grid;\n  display: grid;\n  grid-gap:10px;\n  -ms-grid-columns: 5fr 5fr;\n      grid-template-columns: 5fr 5fr;\n  width: 20%;\n  margin-left: auto;\n  margin-right: 12vw;\n}\n.buttoncmp input{\n  background-color: rgba(0, 0, 0, 0);\n  color: #28AF78;\n  font-size: 1.5vw;\n  padding: 5px 20px 5px 20px;\n  cursor: pointer;\n  border-radius: 5px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: rgba(0, 0, 0,0);\n}\n.buttoncmp input:hover{\n  color: #00d36f;\n  background-color: aliceblue;\n}\n\n#error{\n  color: red;\n  width: 100%;\n  text-align: center;\n}\n\n#successmessage{\n  text-align: center;\n  font-size: 2vw;\n}\n", ""]);
 
 // exports
 
@@ -353,7 +353,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/creategroup/creategroup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- ヘッダーを作成-->\n<header>\n  <img src='assets/images/gestion-logo.png' />\n</header>\n\n<!-- メイン画面-->\n<div id='container'>\n  <div *ngIf='!Success'>\n    <h1>グループの作成</h1>\n\n    <form #f=\"ngForm\" action=\"Change_Page()\">\n      <input name=\"name\"[(ngModel)]=\"GroupName\" class='form'  placeholder=\"グループ名\">\n      <input name=\"name\"[(ngModel)]=\"FirstName\" class='form'  placeholder=\"管理者の苗字\">\n      <input name=\"name\"[(ngModel)]=\"LastName\" class='form'  placeholder=\"管理者の名前\">\n\n      <select class=\"select\" [(ngModel)]=\"Sex\" name='name'>\n        <option value=\"\" selected>性別</option>\n        <option value=\"male\">男</option>\n        <option value=\"famale\">女</option>\n      </select>\n\n      <input type='password' name=\"name\"[(ngModel)]=\"PassWord\" class='form'  placeholder=\"パスワード\">\n      <input name=\"name\"[(ngModel)]=\"MailAdress\" class='form'  placeholder=\"管理者のメールアドレス\">\n\n      <p id='error' *ngIf='error'>{{error}}</p>\n\n      <div id='buttoncmp'>\n        <input type=\"submit\" id='login' value=\" 作成 \" (click)='UserLogin()'>\n        <input type=\"button\" id='cancel' value=\" キャンセル \" (click)='Back_Page()'>\n      </div>\n    </form>\n  </div>\n  <div *ngIf='Success'>\n    <h1>グループ作成完了！</h1>\n    <p id='successmessage'>\n      　グループ名:{{GroupName}}<br />\n        管理者のメールアドレス:{{MailAdress}}<br />\n        管理者のパスワード:{{PassWord}}<br /><br />\n        この３つはログイン時に必要なので忘れないでください\n    </p>\n    <div id='buttoncmp'>\n      <input type=\"button\" id='cancel' value=\" 戻る \" (click)='Back_Page()'>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<!-- ヘッダーを作成-->\n<header>\n  <img src='assets/images/gestion-logo.png' />\n</header>\n\n<!-- メイン画面-->\n<div id='container'>\n  <div *ngIf='!Success'>\n    <h1>グループの作成</h1>\n\n    <form #f=\"ngForm\" action=\"Change_Page()\">\n      <input name=\"name\"[(ngModel)]=\"GroupName\" class='form'  placeholder=\"グループ名\">\n      <input name=\"name\"[(ngModel)]=\"FirstName\" class='form'  placeholder=\"管理者の苗字\">\n      <input name=\"name\"[(ngModel)]=\"LastName\" class='form'  placeholder=\"管理者の名前\">\n\n      <select class=\"select\" [(ngModel)]=\"Sex\" name='name'>\n        <option value=\"\" disabled selected>性別</option>\n        <option value=\"male\">男</option>\n        <option value=\"famale\">女</option>\n      </select>\n\n      <input type='password' name=\"name\"[(ngModel)]=\"PassWord\" class='form'  placeholder=\"パスワード\">\n      <input name=\"name\"[(ngModel)]=\"MailAdress\" class='form'  placeholder=\"管理者のメールアドレス\">\n\n      <p id='error' *ngIf='error'>{{error}}</p>\n\n      <div class='buttoncmp'>\n        <input type=\"submit\" id='login' value=\" 作成 \" (click)='UserLogin()'>\n        <input type=\"button\" class='cancel' value=\" キャンセル \" (click)='Back_Page()'>\n      </div>\n    </form>\n  </div>\n  <div *ngIf='Success'>\n    <h1>グループ作成完了！</h1>\n    <p id='successmessage'>\n      　グループ名:{{GroupName}}<br />\n        管理者のメールアドレス:{{MailAdress}}<br />\n        管理者のパスワード:{{PassWord}}<br /><br />\n        この３つはログイン時に必要なので忘れないでください\n    </p>\n    <div class='buttoncmp'>\n      <input type=\"button\" class='cancel' value=\" 戻る \" (click)='Back_Page()'>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -611,6 +611,16 @@ var ListviewComponent = (function () {
         var _this = this;
         var date = [];
         console.log(data);
+        if (data.length <= 0) {
+            this.WorkTime = [];
+            google.charts.setOnLoadCallback(function () { return _this.drawChart(); });
+            return;
+        }
+        if (data[0].end == null) {
+            this.WorkTime = [];
+            google.charts.setOnLoadCallback(function () { return _this.drawChart(); });
+            return;
+        }
         for (var i = 0; i < data.length; i++) {
             if (data[i].end == null)
                 break;
@@ -635,12 +645,12 @@ var ListviewComponent = (function () {
                 }
             }
             else {
-                this.WorkTime.push([box[key][0], total]);
+                this.WorkTime.push([box[key][0], parseFloat(total.toFixed(2))]);
                 total = box[i][1];
                 key = i;
             }
         }
-        this.WorkTime.push([box[key][0], total]);
+        this.WorkTime.push([box[key][0], parseFloat(total.toFixed(2))]);
         google.charts.setOnLoadCallback(function () { return _this.drawChart(); });
     };
     // ゼロ埋めをする
@@ -665,15 +675,8 @@ var ListviewComponent = (function () {
         this.Token = this.cookie.get('access_token');
         this.BackToken = sessionStorage.getItem('token');
         var today = this.getToday();
-        /*this.authService.getWeekHeartRate(this.Token, today).subscribe(
-           result => this.WeekHeartRate(result),
-           error => console.log(error)
-         );
-    
-        this.authService.getWeekSteps(this.Token,today).subscribe(
-           hosu => this.WeekSteps(hosu),
-           error => console.log(error)
-         );*/
+        this.authService.getWeekHeartRate(this.Token, today).subscribe(function (result) { return _this.WeekHeartRate(result); }, function (error) { return console.log(error); });
+        this.authService.getWeekSteps(this.Token, today).subscribe(function (hosu) { return _this.WeekSteps(hosu); }, function (error) { return console.log(error); });
         // 勤務時間を取得
         this.authService.getMonth(this.BackToken, today).subscribe(function (hosu) { return _this.WorkTimes(hosu); }, function (error) { return console.log(error); });
     };
@@ -915,9 +918,9 @@ var LoginUserComponent = (function () {
         sessionStorage.setItem('userid', result.id);
         sessionStorage.setItem('username', result.first_name + ' ' + result.last_name);
         //本番用
-        window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2284BG&redirect_uri=https%3A%2F%2Fgestion2.swkoubou.com&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+        //window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2284BG&redirect_uri=https%3A%2F%2Fgestion2.swkoubou.com&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
         //test用
-        //window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228PRR&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+        window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228PRR&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
     };
     //戻るボタンを押した時はグループログインのページに戻る
     LoginUserComponent.prototype.Back_Page = function () {
@@ -995,6 +998,15 @@ var RequestService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Authorization': 'Bearer ' + token });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["f" /* RequestOptions */]({ headers: headers });
         var monthUrl = this.backurl + '/users/me/attendance_records';
+        return this.http.get(monthUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    //サーバーから勤務時間を取得
+    RequestService.prototype.backProfile = function (token) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Authorization': 'Bearer ' + token });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["f" /* RequestOptions */]({ headers: headers });
+        var monthUrl = this.backurl + '/users/me';
         return this.http.get(monthUrl, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -1211,6 +1223,7 @@ module.exports = "<div id='container'>\n  <div id='top'>\n    <ul class='list'>\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__request_service__ = __webpack_require__("../../../../../src/app/request.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1222,9 +1235,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var SettingComponent = (function () {
-    function SettingComponent(router) {
+    function SettingComponent(router, authService) {
         this.router = router;
+        this.authService = authService;
         //表示するコンポーネントをbooleanで制御する
         this.Admin = true;
         this.UserList = false;
@@ -1235,6 +1250,15 @@ var SettingComponent = (function () {
         this.SelectUserList = false;
     }
     SettingComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.BackToken = sessionStorage.getItem('token');
+        this.authService.backProfile(this.BackToken).subscribe(function (result) { return _this.Profile(result); }, function (error) { return console.log(error); });
+    };
+    //左のバーに表示するデータをFitbitから取得
+    SettingComponent.prototype.Profile = function (data) {
+        if (data["permission"] !== "admin") {
+            this.Admin = false;
+        }
     };
     //下全て表示するコンポーネントを切り替える処理
     SettingComponent.prototype.Change_UserSetting = function () {
@@ -1281,10 +1305,10 @@ SettingComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/setting/setting.component.html"),
         styles: [__webpack_require__("../../../../../src/app/setting/setting.component.css")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__request_service__["a" /* RequestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__request_service__["a" /* RequestService */]) === "function" && _b || Object])
 ], SettingComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=setting.component.js.map
 
 /***/ }),
@@ -1418,7 +1442,7 @@ var TopAdminComponent = (function () {
                 key = i;
             }
         }
-        work.push(total);
+        work.push(parseFloat(total.toFixed(2)));
         this.EmployeeList[p].group_id = work[work.length - 1];
     };
     return TopAdminComponent;
@@ -1445,7 +1469,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#left{\n  width: 15%;\n  height: 100%;\n  max-height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  box-sizing: border-box;\n  border-right: 1px solid #e0e0e0;\n  background-color: #193C4D;\n  color: white;\n  z-index: 20;\n}\n#left img{\n  width: 30%;\n  border-radius: 50px;\n  margin-top: 5vh;\n  margin-left: 2vw;\n}\n#left header {\n  background-color: #002537;\n  height: 20%;\n}\n#left header p{\n  color: white;\n  margin-top: 10px;\n  margin-left: 2vw;\n}\n#left table{\n  margin: 25px auto;\n  width: 90%;\n  font-size: 0.8vw;\n}\n\n\n#right{\n    width: 85%;\n    height: 100%;\n    max-height: 100%;\n    position: absolute;\n    top: 0;\n    left: 15%;\n    background: #F4F4F4;\n}\n#right header{\n  height: 7%;\n  background-color: #00E676;\n  text-align: center;\n  box-shadow: 0 4px 1px rgba(0,0,0,0.2);\n}\n#right header img{\n  margin-top: 0%;\n  height: 100%;\n}\n\n#triggar i{\n  width: 50px;\n  height: 50px;\n  font-size: 1.4vw;\n  cursor: pointer;\n  text-align: center;\n  background-color: #009250;\n  border-radius: 50%;\n  box-shadow: 0 7px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);\n  vertical-align: middle;\n  transition: -webkit-transform .3s;\n  transition: transform .3s;\n  transition: transform .3s, -webkit-transform .3s;\n  display: table-cell;\n}\n\n#triggar i:active{\n  -webkit-transform: rotate(360deg);\n          transform: rotate(360deg);\n}\n#triggar:hover{\n  color: #888;\n}\n\n#menu {\n  margin: 0 0 20px 0;\n  padding: 0 0 0 0;\n  z-index: 110;\n  max-width: 30vw; /* メニューのwidth */\n  opacity: 0;\n  transition: .5s;\n  visibility: hidden;\n}\n#menu li{\n  margin-top: 3vh;\n  cursor: pointer;\n  list-style: none;\n  text-align: right;\n}\n#menu li:hover{\n  color: #888;\n}\n\n#menu p{\n  font-size: 1vw;\n  float: right;\n  margin-top: 0;\n  margin-left: 10px;\n}\n\n#menu i{\n  width: 40px;\n  height: 40px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #009250;\n  border-radius: 50%;\n  box-shadow: 0 7px 10px 0 rgba(0,0,0,.12), 0 2px 10px 0 rgba(0,0,0,.24);\n  display: table-cell;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n\n#flag{\n  display: none;\n}\n\n#flag:checked + #menu{\n  visibility: visible;\n  opacity: 1;\n}\n\n#list{\n  position: fixed;\n  top: 60%;\n  left: 90%;\n}\n\n\nfooter{\n  font-size:.7vw;\n  position: absolute;\n  bottom:1%;\n  color: rgba(255, 255, 255, 0.8);\n}\n\n.material-icons{\n  color: white;\n}\n", ""]);
+exports.push([module.i, "#left{\n  width: 15%;\n  height: 100%;\n  max-height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  box-sizing: border-box;\n  border-right: 1px solid #e0e0e0;\n  background-color: #193C4D;\n  color: white;\n  z-index: 20;\n}\n#left img{\n  width: 30%;\n  border-radius: 50px;\n  margin-top: 5vh;\n  margin-left: 2vw;\n}\n#left header {\n  background-color: #002537;\n  height: 20%;\n}\n#left header p{\n  color: white;\n  margin-top: 10px;\n  margin-left: 2vw;\n}\n#left table{\n  margin: 25px auto;\n  width: 90%;\n  font-size: 0.8vw;\n}\n\n\n#right{\n    width: 85%;\n    height: 100%;\n    max-height: 100%;\n    position: absolute;\n    top: 0;\n    left: 15%;\n    background: #F4F4F4;\n}\n#right header{\n  height: 7%;\n  background-color: #00E676;\n  text-align: center;\n  box-shadow: 0 4px 1px rgba(0,0,0,0.2);\n}\n#right header img{\n  margin-top: 0%;\n  height: 100%;\n}\n\n#triggar i{\n  width: 50px;\n  height: 50px;\n  font-size: 1.4vw;\n  cursor: pointer;\n  text-align: center;\n  background-color: #009250;\n  border-radius: 50%;\n  box-shadow: 0 7px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);\n  vertical-align: middle;\n  transition: -webkit-transform .3s;\n  transition: transform .3s;\n  transition: transform .3s, -webkit-transform .3s;\n  display: table-cell;\n}\n\n#triggar i:active{\n  -webkit-transform: rotate(360deg);\n          transform: rotate(360deg);\n}\n#triggar:hover{\n  color: #888;\n}\n\n#menu {\n  margin: 0 0 20px 0;\n  padding: 0 0 0 0;\n  z-index: 110;\n  max-width: 30vw; /* メニューのwidth */\n  opacity: 0;\n  transition: .5s;\n  visibility: hidden;\n}\n#menu li{\n  margin-top: 3vh;\n  cursor: pointer;\n  list-style: none;\n  text-align: right;\n}\n#menu li:hover{\n  color: #888;\n}\n\n#menu p{\n  font-size: 1vw;\n  float: right;\n  margin-top: 0;\n  margin-left: 10px;\n}\n\n#menu i{\n  width: 40px;\n  height: 40px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #009250;\n  border-radius: 50%;\n  box-shadow: 0 7px 10px 0 rgba(0,0,0,.12), 0 2px 10px 0 rgba(0,0,0,.24);\n  display: table-cell;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n\n#flag{\n  display: none;\n}\n\n#flag:checked + #menu{\n  visibility: visible;\n  opacity: 1;\n}\n\n#list{\n  position: fixed;\n  top: 55%;\n  left: 90%;\n}\n\n\nfooter{\n  font-size:.7vw;\n  position: absolute;\n  bottom:1%;\n  color: rgba(255, 255, 255, 0.8);\n}\n\n.material-icons{\n  color: white;\n}\n", ""]);
 
 // exports
 
@@ -1458,7 +1482,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/top-page/top-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"left\">\n  <header>\n    <img [src]=\"User.ImageSrc\" />\n    <p>{{User.Name}}</p>\n  </header>\n  <table class=\"type01\">\n\t<tr>\n    <td><i class=\"material-icons\">accessibility</i></td>\n\t\t<td>身長</td>\n    <td>{{User.Height}}cm</td>\n\t</tr>\n\t<tr>\n    <td><i class=\"material-icons\">accessibility</i></td>\n    <td>体重</td>\n    <td>{{User.Weight}}kg</td>\n\t</tr>\n\t<tr>\n    <td><i class=\"material-icons\">favorite</i></td>\n    <td>ストレス</td>\n    <td>\n      <p *ngIf=\"User.Stress\">検知しました</p>\n      <p *ngIf=\"!User.Stress\">ないです</p>\n    </td>\n\t</tr>\n</table>\n<footer>\n  &copy;2017 Growbal Active\n</footer>\n</div>\n\n\n<div id='right'>\n  <header>\n    <img src='assets/images/gestion-logo.png' />\n  </header>\n  <div id='list'>\n    <input type='checkbox' id='flag' />\n    <ul id='menu'>\n      <li (click)='Change_ListView()' ><p>個人モード</p><i class=\"material-icons\">person</i></li>\n      <li (click)='Change_TopAdmin()' *ngIf='Admin'><p>管理者モード</p><i class=\"material-icons\">group</i></li>\n      <li (click)='Change_Setting()' ><p>各種設定</p><i class=\"material-icons\">build</i></li>\n      <li (click)='Change_Logout()' ><p>ログアウト</p><i class=\"material-icons\">block</i></li>\n    </ul>\n    <label id='triggar' for='flag'><i class=\"material-icons\">reorder</i></label>\n  </div>\n\n  <app-listview *ngIf='ListView'></app-listview>\n  <app-top-admin *ngIf='TopAdmin'></app-top-admin>\n  <app-setting *ngIf='Setting'></app-setting>\n</div>\n"
+module.exports = "<div id=\"left\">\n  <header>\n    <img [src]=\"User.ImageSrc\" />\n    <p>{{User.Name}}</p>\n  </header>\n  <table class=\"type01\">\n\t<tr>\n    <td><i class=\"material-icons\">accessibility</i></td>\n\t\t<td>身長</td>\n    <td>{{User.Height}}cm</td>\n\t</tr>\n\t<tr>\n    <td><i class=\"material-icons\">accessibility</i></td>\n    <td>体重</td>\n    <td>{{User.Weight}}kg</td>\n\t</tr>\n\t<tr>\n    <td><i class=\"material-icons\">favorite</i></td>\n    <td>ストレス</td>\n    <td>{{User.Stress}}</td>\n\t</tr>\n</table>\n<footer>\n  &copy;2017 Growbal Active\n</footer>\n</div>\n\n\n<div id='right'>\n  <header>\n    <img src='assets/images/gestion-logo.png' />\n  </header>\n  <div id='list'>\n    <input type='checkbox' id='flag' />\n    <ul id='menu'>\n      <li (click)='Change_ListView()' ><p>個人モード</p><i class=\"material-icons\">person</i></li>\n      <li (click)='Change_TopAdmin()' *ngIf='Admin'><p>管理者モード</p><i class=\"material-icons\">group</i></li>\n      <li (click)='Change_Setting()' ><p>各種設定</p><i class=\"material-icons\">build</i></li>\n      <li (click)='Change_Logout()' ><p>ログアウト</p><i class=\"material-icons\">block</i></li>\n    </ul>\n    <label id='triggar' for='flag'><i class=\"material-icons\">reorder</i></label>\n  </div>\n\n  <app-listview *ngIf='ListView'></app-listview>\n  <app-top-admin *ngIf='TopAdmin'></app-top-admin>\n  <app-setting *ngIf='Setting'></app-setting>\n</div>\n"
 
 /***/ }),
 
@@ -1500,7 +1524,7 @@ var TopPageComponent = (function () {
             Name: '',
             Weight: 0,
             Height: 0,
-            Stress: true,
+            Stress: '',
             ImageSrc: '',
             Id: 0
         };
@@ -1521,6 +1545,7 @@ var TopPageComponent = (function () {
     //ngOnInitはページが読み込み終わったら実行、constructorはページを読み込むと同時に
     TopPageComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.authService.backProfile(this.BackToken).subscribe(function (result) { return _this.Profile(result); }, function (error) { return console.log(error); });
         this.authService.getProfile(this.FitbitToken).subscribe(function (result) { return _this.setProfile(result); }, function (error) { return console.log(error); });
     };
     //下３つは表示コンポーネントを変更するメソッド
@@ -1555,6 +1580,12 @@ var TopPageComponent = (function () {
         this.User.ImageSrc = data['user'].avatar;
         this.authService.putProfile(this.BackToken, data['user'].encodedId, this.FitbitToken).subscribe(function (result) { return _this.GetStress(); }, function (error) { return console.log(error); });
     };
+    //左のバーに表示するデータをFitbitから取得
+    TopPageComponent.prototype.Profile = function (data) {
+        if (data["permission"] !== "admin") {
+            this.Admin = false;
+        }
+    };
     //ストレスを取得
     TopPageComponent.prototype.GetStress = function () {
         var _this = this;
@@ -1563,6 +1594,15 @@ var TopPageComponent = (function () {
     //出勤をサーバーに伝える
     TopPageComponent.prototype.enter = function (data) {
         console.log(data);
+        if (data[data.length - 1].value >= 5) {
+            this.User.Stress = "要注意";
+        }
+        else if (data[data.length - 1].value >= 2) {
+            this.User.Stress = "注意";
+        }
+        else {
+            this.User.Stress = "普通";
+        }
         this.authService.enter(this.BackToken).subscribe(function (result) { return ''; }, function (error) { return console.log(error); });
     };
     return TopPageComponent;
