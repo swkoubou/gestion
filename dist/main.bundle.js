@@ -430,7 +430,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#container {\n  font-size: 1.5vw;\n}\n\n.box{\n  margin: 20px auto;\n  display: -ms-grid;\n  display: grid;\n  width: 85%;\n  grid-gap:30px;\n  -ms-grid-columns: 3fr 3fr;\n      grid-template-columns: 3fr 3fr;\n  -ms-grid-rows: 10fr;\n      grid-template-rows: 10fr;\n}\n\n.box p{\n  margin: 0 0 0 0;\n}\n\n.name{\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 5fr 5fr;\n      grid-template-columns: 5fr 5fr;\n  grid-gap:10px;\n}\n\n.box input {\n  font-size: 1vw;\n  padding: 10px 0 10px 0;\n  width: 20vw;\n  box-shadow: none;\n  border: none;\n  border-bottom: 1px solid #d3d3d3;\n}\n\n.select{\n  width: 50%;\n  font-size: 2vw;\n  border:none;\n  box-shadow: none;\n  margin-left: 40px;\n  margin-bottom: 1vh;\n  margin-top: 1vh;\n}\n\n#buttoncmp{\n  margin: 20px auto;\n  max-width: 20%;\n}\n\n#buttoncmp input{\n  background-color: rgba(0, 0, 0, 0);\n  color: #28AF78;\n  font-size: 1.5vw;\n  padding: 5px 20px 5px 20px;\n  cursor: pointer;\n  border-radius: 5px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: rgba(0, 0, 0,0);\n}\n#buttoncmp input:hover{\n  color: #00d36f;\n  background-color: aliceblue;\n}\n\n#error{\n  color: red;\n  width: 100%;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "#container {\n  font-size: 1.5vw;\n}\n\n.box{\n  margin: 20px auto;\n  display: -ms-grid;\n  display: grid;\n  width: 85%;\n  grid-gap:30px;\n  -ms-grid-columns: 3fr 3fr;\n      grid-template-columns: 3fr 3fr;\n  -ms-grid-rows: 10fr;\n      grid-template-rows: 10fr;\n}\n\n.box p{\n  margin: 0 0 0 0;\n}\n\n.name{\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 5fr 5fr;\n      grid-template-columns: 5fr 5fr;\n  grid-gap:10px;\n}\n\n.box input {\n  font-size: 1vw;\n  padding: 10px 0 10px 0;\n  width: 20vw;\n  box-shadow: none;\n  border: none;\n  border-bottom: 1px solid #d3d3d3;\n}\n\n.select{\n  width: 50%;\n  font-size: 2vw;\n  border:none;\n  box-shadow: none;\n  margin-left: 40px;\n  margin-bottom: 1vh;\n  margin-top: 1vh;\n  border-bottom: 1px solid #c0c0c0;\n}\n\n#buttoncmp{\n  margin: 20px auto;\n  max-width: 20%;\n}\n\n#buttoncmp input{\n  background-color: rgba(0, 0, 0, 0);\n  color: #28AF78;\n  font-size: 1.5vw;\n  padding: 5px 20px 5px 20px;\n  cursor: pointer;\n  border-radius: 5px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: rgba(0, 0, 0,0);\n}\n#buttoncmp input:hover{\n  color: #00d36f;\n  background-color: aliceblue;\n}\n\n#error{\n  color: red;\n  width: 100%;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -777,6 +777,9 @@ var LoginGroupComponent = (function () {
                 expires: this.getToday()
             };
             this.cookie.put(key, value, opts);
+            this.router.navigate(['/toppage']);
+        }
+        if (sessionStorage.getItem('token')) {
             this.router.navigate(['/toppage']);
         }
     }

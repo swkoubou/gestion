@@ -33,8 +33,12 @@ export class LoginGroupComponent implements OnInit {
       this.cookie.put(key, value, opts);
       this.router.navigate(['/toppage']);
     }
-   }
 
+    if (sessionStorage.getItem('token')) {
+      this.router.navigate(['/toppage']);
+    }
+  }
+  
     // アクセストークンをクッキーに格納する
   ngOnInit() {
   }
