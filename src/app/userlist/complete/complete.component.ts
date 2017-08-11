@@ -33,7 +33,7 @@ export class CompleteComponent {
     }
     this.BackToken = sessionStorage.getItem('token');
     this.request.AdminChange(this.BackToken, this.password, this.email, this.id).subscribe(
-      result => console.log(result),
+      result => this.TotalVisible(result),
       error => console.log(error)
     );
   }
@@ -41,5 +41,14 @@ export class CompleteComponent {
   //モーダルを閉じる
   ModalClose(): void {
     this.modal.close();
+  }
+
+  TotalVisible(result:any){
+    if (result.code) {
+      this.Error = 'この入力データでは作成できません';
+      return;
+    }
+
+    this.Error = '更新成功';
   }
 }

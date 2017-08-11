@@ -62,15 +62,21 @@ export class ListviewComponent implements OnInit {
   // 勤務時間を計測
   public WorkTimes(data: any[]): void {
     const date = [];
-    for (let i = 0; data[i].end !== null; i++) {
+    console.log(data);
+    for (let i = 0; i < data.length; i++) {
+      if(data[i].end == null)break;
       data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
       date[i] = new Date(data[i].begin);
       date[i].setHours(date[i].getHours() - 9);
-      data[i].id = data[i].id / 1000 / 3600;
+
+      var h = String(Math.floor(data[i].id / 3600000) + 100).substring(1);
+      var m = String(Math.floor((data[i].id - parseInt(h) * 3600000)/60000)+ 100).substring(1);
+      data[i].id = parseInt(h) + parseInt(m) / 100;
+
       this.WorkTime[i] = '';
       this.WorkTime[i] = [new Date(date[i].getFullYear(),date[i].getMonth(),date[i].getDate()),  parseFloat(data[i].id.toFixed(2))];
     }
-    
+
     var box = this.WorkTime;
     this.WorkTime = [];
     var total = 0,key = 0;
@@ -78,6 +84,10 @@ export class ListviewComponent implements OnInit {
     for(let i = 0; i < box.length; i++){
       if(box[i][0].getDate() == box[key][0].getDate()){
         total += box[i][1];
+        if(total % 1 >= 0.60){
+          total += 1;
+          total -= 0.60;
+        }
       }else{
         this.WorkTime.push([box[key][0], total]);
         total = box[i][1];

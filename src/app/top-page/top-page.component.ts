@@ -103,13 +103,14 @@ export class TopPageComponent implements OnInit {
   //ストレスを取得
   GetStress(): void {
     this.authService.GetStress(this.BackToken).subscribe(
-      result => this.enter(),
+      result => this.enter(result),
       error => console.log(error)
     );
   }
 
   //出勤をサーバーに伝える
-  enter(): void {
+  enter(data:any): void {
+    console.log(data);
     this.authService.enter(this.BackToken).subscribe(
       result => '',
       error => console.log(error)

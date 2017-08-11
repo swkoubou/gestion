@@ -77,17 +77,39 @@ export class TopAdminComponent implements OnInit {
 
     //持ってきた勤務時間のデータを表示できるように整形している
  WorkTime(data: any[], p: number): void {
-    const date = [];
-    let WorkTime = 0;
-    for (let i = 0; i < data.length - 1; i++) {
-      data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
-      date[i] = new Date(data[i].begin);
-      date[i].setHours(date[i].getHours() - 9);
-      data[i].id = data[i].id / 1000 / 3600;
-      WorkTime = 0;
-      WorkTime = parseFloat(data[i].id.toFixed(2));
-    }
-    this.EmployeeList[p].group_id = WorkTime;
+   const date = [];
+   console.log(data);
+   for (let i = 0; i < data.length; i++) {
+     if(data[i].end == null)break;
+     data[i].id =  Date.parse(data[i].end) - Date.parse(data[i].begin);
+     date[i] = new Date(data[i].begin);
+     date[i].setHours(date[i].getHours() - 9);
+     data[i].begin = date[i].getDate();
+
+     var h = String(Math.floor(data[i].id / 3600000) + 100).substring(1);
+     var m = String(Math.floor((data[i].id - parseInt(h) * 3600000)/60000)+ 100).substring(1);
+     data[i].id = parseInt(h) + parseInt(m) / 100;
+   }
+   var box = data;
+   var total = 0, key = 0, work = [];
+   for(let i = 0; i < box.length; i++){
+     if(data[i].end == null)break;
+
+     if(data[i].begin == data[key].begin){
+       total += box[i].id;
+       if(total % 1 >= 0.60){
+         total += 1;
+         total -= 0.60;
+       }
+     }else{
+       work.push(total);
+       total = box[i].id;
+       key = i;
+     }
+   }
+
+   work.push(total);
+   this.EmployeeList[p].group_id = work[work.length - 1];
 }
 
 }
