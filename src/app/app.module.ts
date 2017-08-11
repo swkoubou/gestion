@@ -26,6 +26,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/Rx';
 import { CreategroupComponent } from './creategroup/creategroup.component';
 
 

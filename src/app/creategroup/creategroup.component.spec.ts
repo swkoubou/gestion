@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+ import { FormsModule } from '@angular/forms';
+ import { RouterTestingModule } from '@angular/router/testing';
+ import { HttpModule,JsonpModule } from '@angular/http';
+
 
 import { CreategroupComponent } from './creategroup.component';
+import { RequestService} from '../request.service';
 
 describe('CreategroupComponent', () => {
   let component: CreategroupComponent;
@@ -8,7 +13,9 @@ describe('CreategroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreategroupComponent ]
+      imports: [RouterTestingModule,FormsModule,HttpModule,JsonpModule],
+      declarations: [ CreategroupComponent ],
+      providers:[RequestService]
     })
     .compileComponents();
   }));

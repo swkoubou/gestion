@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule,JsonpModule } from '@angular/http';
+import { RequestService} from '../request.service';
 import { LoginGroupComponent } from './login-group.component';
 
 describe('LoginGroupComponent', () => {
@@ -8,7 +11,9 @@ describe('LoginGroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginGroupComponent ]
+      imports: [RouterTestingModule,FormsModule,HttpModule,JsonpModule],
+      declarations: [ LoginGroupComponent ],
+      providers:[RequestService]
     })
     .compileComponents();
   }));

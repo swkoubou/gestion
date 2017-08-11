@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+ import { RouterTestingModule } from '@angular/router/testing';
+
 import { BootComponent } from './boot.component';
+
+import { CookieService } from 'angular2-cookie/core';
+
+class mockCookieService {
+    getObject(name: string) {
+        return true;
+    }
+}
 
 describe('BootComponent', () => {
   let component: BootComponent;
@@ -8,7 +18,9 @@ describe('BootComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BootComponent ]
+      imports: [RouterTestingModule],
+      declarations: [BootComponent],
+      //providers:[{ provide: CookieService, useClass: mockCookieService },]
     })
     .compileComponents();
   }));
