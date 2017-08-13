@@ -44,9 +44,9 @@ export class LoginUserComponent implements OnInit {
     sessionStorage.setItem('userid', result.id);
     sessionStorage.setItem('username', result.first_name + ' ' + result.last_name);
     //本番用
-    window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2284BG&redirect_uri=https%3A%2F%2Fgestion2.swkoubou.com&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+  //  window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2284BG&redirect_uri=https%3A%2F%2Fgestion2.swkoubou.com&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
     //test用
-    //window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228PRR&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
+    window.location.href = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228PRR&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800';
 
   }
 

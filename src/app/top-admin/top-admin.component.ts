@@ -57,10 +57,11 @@ export class TopAdminComponent implements OnInit {
   GetStress(id: number, i: number): void {
     this.authService.getstress(this.BackToken, id).subscribe(
       result => {
-        if (!result) {
+        if (result.length <= 0) {
           this.EmployeeList[i].last_name = '0';
         } else {
-          this.EmployeeList[i].last_name = '13';
+          console.log(result);
+          this.EmployeeList[i].last_name = parseFloat(result[result.length - 1]["value"].toFixed(2));
         }
       },
       error => console.log(error)
